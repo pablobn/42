@@ -1,5 +1,12 @@
 {
     "files.associations": {
-        "stdlib.h": "c"
-    }
+        "stdlib.h": "c",
+        "string.h": "c",
+        "__functional_03": "c",
+        "functional": "c",
+        "algorithm": "c",
+        "string": "c",
+        "iosfwd": "c"
+    },
+    "C_Cpp.errorSquiggles": "Disabled"
 }
