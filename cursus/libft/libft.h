@@ -6,7 +6,7 @@
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 15:33:51 by pbengoec          #+#    #+#             */
-/*   Updated: 2022/09/26 18:47:05 by pbengoec         ###   ########.fr       */
+/*   Updated: 2022/09/29 19:15:47 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,17 +40,11 @@ char	*ft_strchr(const char *s, int c);
 // The functions strchr() and strrchr() return a pointer to the located
 //      character, or NULL if the character does not appear in the string.
 char	*ft_strrchr(const char *s, int c);
-// The strlen() function returns the number of characters that precede the
-//      terminating NUL character.  The strnlen() function returns either the
-//      same result as strlen() or maxlen, whichever is smaller.
+// return length of string
 size_t	ft_strlen(const char *s);
-// If the argument is an upper-case letter, the tolower() function returns
-//      the corresponding lower-case letter if there is one; otherwise,
-//      the argument is returned unchanged.
+// Changes upper-case letter to lower-case letter
 int		ft_tolower(int c);
-// If the argument is a lower-case letter, the toupper() function returns
-//      the corresponding upper-case letter if there is one; otherwise, 
-//      the argument is returned unchanged.
+// Changes lower-case letter to upper-case letter
 int		ft_toupper(int c);
 // The strcmp() and strncmp() functions return an integer greater than,
 //      equal to, or less than 0, according as the string s1 is greater than,
@@ -63,4 +57,20 @@ void	*ft_memset(void *b, int c, size_t len);
 // The bzero() function writes n zeroed bytes to the string s.  If n is
 //      zero, bzero() does nothing.
 void	ft_bzero(void *s, size_t n);
+// The memcpy() function copies n bytes from memory area src to memory area
+//      dst.  If dst and src overlap, behavior is undefined.  Applications in
+//      which dst and src might overlap should use memmove(3) instead.
+void	*ft_memcpy(void *dst, const void *src, size_t n);
+// The memmove() function copies len bytes from string src to string dst.
+//      The two strings may overlap; the copy is always done in a 
+//      non-destructive manner.
+void	*ft_memmove(void *dst, const void *src, size_t len);
+// Copy the string src into dst
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
+// Appends string src to the end of dst
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
+// function locates the first occurrence of c (converted to an
+//      unsigned char) in string s.
+void	*ft_memchr(const void *s, int c, size_t n);
+int	ft_memcmp(const void *s1, const void *s2, size_t n);
 #endif

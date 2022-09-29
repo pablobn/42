@@ -1,27 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/23 17:27:17 by pbengoec          #+#    #+#             */
-/*   Updated: 2022/09/26 19:19:04 by pbengoec         ###   ########.fr       */
+/*   Created: 2022/09/29 18:54:58 by pbengoec          #+#    #+#             */
+/*   Updated: 2022/09/29 19:15:24 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	*ft_memset(void *b, int c, size_t len)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	char	*str;
-
-	str = b;
-	while (len > 0)
-	{
-		*str = (unsigned char) c;
-		str++;
-		len--;
-	}
-	return (b);
+	
 }
