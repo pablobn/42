@@ -1,30 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/29 18:54:58 by pbengoec          #+#    #+#             */
-/*   Updated: 2022/09/29 20:38:51 by pbengoec         ###   ########.fr       */
+/*   Created: 2022/09/30 11:39:05 by pbengoec          #+#    #+#             */
+/*   Updated: 2022/09/30 15:53:48 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_memcmp(const void *s1, const void *s2, size_t n)
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	size_t	i;
 	char	*a;
 	char	*b;
+	size_t	i;
+	size_t	j;
 
+	a = (char *) haystack;
+	b = (char *) needle;
 	i = 0;
-	a = (char *) s1;
-	b = (char *) s2;
-	while (i < n)
+	if (ft_strlen(needle) == 0)
+		return (a);
+	while (a[i] && i < len)
 	{
-		if (a[i] != b[i])
-			return ((unsigned char) a[i] - (unsigned char) b[i]);
+		j = 0;
+		while (b[j] == a[i + j] && i + j < len)
+		{
+			if (b[j + 1] == '\0')
+				return (&a[i]);
+			j++;
+		}
 		i++;
 	}
 	return (0);

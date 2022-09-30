@@ -6,7 +6,7 @@
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 15:33:51 by pbengoec          #+#    #+#             */
-/*   Updated: 2022/09/29 19:15:47 by pbengoec         ###   ########.fr       */
+/*   Updated: 2022/09/30 15:50:52 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,7 @@
 // The isalnum() function returns zero if the character tests false and
 //      returns non-zero if the character tests true.
 int		ft_isalnum(int c);
-// The isalpha() function returns zero if the character tests false and
-//      returns non-zero if the character tests true.
+// If is digit or is alpha == 1 else == 0
 int		ft_isalpha(int c);
 // The isascii() function tests for an ASCII character, which is any charac-
 //      ter between 0 and octal 0177 inclusive.
@@ -31,8 +30,7 @@ int		ft_isascii(int c);
 // The isdigit() function tests for a decimal digit character.  Regardless
 //      of locale, this includes the following characters only:
 int		ft_isdigit(int c);
-// The isprint() function returns zero if the character tests false and
-//      returns non-zero if the character tests true.
+// If character is digit == 1 else == 0
 int		ft_isprint(int c);
 // The functions strchr() and strrchr() return a pointer to the located
 //      character, or NULL if the character does not appear in the string.
@@ -46,7 +44,7 @@ size_t	ft_strlen(const char *s);
 int		ft_tolower(int c);
 // Changes lower-case letter to upper-case letter
 int		ft_toupper(int c);
-// The strcmp() and strncmp() functions return an integer greater than,
+// Functions return an integer greater than,
 //      equal to, or less than 0, according as the string s1 is greater than,
 //      equal to, or less than the string s2.  The comparison is done using
 //      unsigned characters, so that `\200' is greater than `\0'.
@@ -72,5 +70,11 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
 // function locates the first occurrence of c (converted to an
 //      unsigned char) in string s.
 void	*ft_memchr(const void *s, int c, size_t n);
-int	ft_memcmp(const void *s1, const void *s2, size_t n);
+// The memcmp() function compares byte string s1 against byte string s2.
+//      Both strings are assumed to be n bytes long.
+int		ft_memcmp(const void *s1, const void *s2, size_t n);
+// Find the position of the string where coincide with the string or word given.
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
+// Converts string to int;
+int		ft_atoi(const char *str);
 #endif
