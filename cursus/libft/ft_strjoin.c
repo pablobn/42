@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/26 20:26:20 by pbengoec          #+#    #+#             */
-/*   Updated: 2022/09/30 16:47:16 by pbengoec         ###   ########.fr       */
+/*   Created: 2022/09/30 19:06:02 by pbengoec          #+#    #+#             */
+/*   Updated: 2022/09/30 19:31:51 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t	i;
-	char	*a;
+	char	*new;
+	size_t	sum;
 
-	a = (char *) src;
-	i = 0;
-	if (dstsize <= 0)
-		return (ft_strlen(src));
-	while (a[i] && i < dstsize - 1)
-	{
-		dst[i] = a[i];
-		i++;
-	}
-	dst[i] = '\0';
-	return (ft_strlen(src));
+	sum = ft_strlen(s1) + ft_strlen(s2) + 1;
+	new = ft_calloc(sum, sizeof(char));
+	if (new == 0)
+		return (0);
+	ft_strlcpy(new, s1, sum);
+	ft_strlcat(new, s2, sum);
+	return (new);
 }

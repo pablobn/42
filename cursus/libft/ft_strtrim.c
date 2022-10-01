@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/26 20:26:20 by pbengoec          #+#    #+#             */
-/*   Updated: 2022/09/30 16:47:16 by pbengoec         ###   ########.fr       */
+/*   Created: 2022/09/30 19:34:04 by pbengoec          #+#    #+#             */
+/*   Updated: 2022/10/01 16:37:20 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	size_t	i;
-	char	*a;
+	char	*new;
+	size_t	newlen;
 
-	a = (char *) src;
-	i = 0;
-	if (dstsize <= 0)
-		return (ft_strlen(src));
-	while (a[i] && i < dstsize - 1)
-	{
-		dst[i] = a[i];
-		i++;
-	}
-	dst[i] = '\0';
-	return (ft_strlen(src));
+	if (s1 == NULL || set == NULL)
+		return (NULL);
+	while (*s1 && ft_strchr(set,*s1))
+		s1++;
+	newlen = ft_strlen(s1);
+	while (newlen > 0 && ft_strchr(set, s1[newlen]))
+		newlen--;
+	new = ft_substr(s1, 0, newlen + 1);
+	return (new);
 }
+
+// int main()
+// {
+//     char s1[] = "";
+//     printf("%s", ft_strtrim(s1, ""));
+// }

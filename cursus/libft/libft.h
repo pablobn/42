@@ -6,18 +6,16 @@
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 15:33:51 by pbengoec          #+#    #+#             */
-/*   Updated: 2022/09/30 15:50:52 by pbengoec         ###   ########.fr       */
+/*   Updated: 2022/09/30 20:21:51 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# include <stdio.h>
 # include <stddef.h>
-# include <unistd.h>
 # include <stdlib.h>
-# include <string.h>
+# include <stdio.h>
 
 // The isalnum() function returns zero if the character tests false and
 //      returns non-zero if the character tests true.
@@ -77,4 +75,16 @@ int		ft_memcmp(const void *s1, const void *s2, size_t n);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 // Converts string to int;
 int		ft_atoi(const char *str);
+// Allocate memory to hold an array of 'count', 
+// and each 'count' occupies 'size' bytes.
+void	*ft_calloc(size_t count, size_t size);
+// Copy the memory and value of the string given
+// into another new memory with the same value
+char	*ft_strdup(const char *s1);
+// Trim the string according to the given parameters.
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+// Append s2 to the end of s1
+char	*ft_strjoin(char const *s1, char const *s2);
+// trims the string with the given set
+char	*ft_strtrim(char const *s1, char const *set);
 #endif
