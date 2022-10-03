@@ -6,7 +6,7 @@
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 15:56:42 by pbengoec          #+#    #+#             */
-/*   Updated: 2022/09/22 17:33:43 by pbengoec         ###   ########.fr       */
+/*   Updated: 2022/10/01 20:21:49 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,3 @@ char	*ft_strchr(const char *s, int c)
 		return ((char *) &*s);
 	return (NULL);
 }
-
-// int main()
-// {
-// 	printf("Function strchr str = \"teste\", char = 'e' \n");
-// 	printf("Solution: %s\n",ft_strchr("teste", 'g'));
-// }

@@ -6,7 +6,7 @@
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 15:33:51 by pbengoec          #+#    #+#             */
-/*   Updated: 2022/09/30 20:21:51 by pbengoec         ###   ########.fr       */
+/*   Updated: 2022/10/03 13:04:23 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,10 @@ char	*ft_strdup(const char *s1);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 // Append s2 to the end of s1
 char	*ft_strjoin(char const *s1, char const *s2);
-// trims the string with the given set
+// Cut the start and the end of the string in case that 
+// coincide with any character of the string set
 char	*ft_strtrim(char const *s1, char const *set);
+// Convert an string to an array of strings 
+// with the char c as delimiter
+char	**ft_split(char const *s, char c);
 #endif

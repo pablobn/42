@@ -6,7 +6,7 @@
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 20:06:43 by pbengoec          #+#    #+#             */
-/*   Updated: 2022/09/23 17:12:54 by pbengoec         ###   ########.fr       */
+/*   Updated: 2022/10/01 19:47:31 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,3 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	}
 	return (0);
 }
-
-// int main()
-// {
-// 	printf("Solution: %d\n",ft_strncmp("abcdef", "abc\xfdxx", 5));
-// 	printf("TRUE Solution: %d\n",strncmp("abcdef", "abc\xfdxx", 5));
-// }

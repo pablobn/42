@@ -6,7 +6,7 @@
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 19:34:04 by pbengoec          #+#    #+#             */
-/*   Updated: 2022/10/01 16:37:20 by pbengoec         ###   ########.fr       */
+/*   Updated: 2022/10/01 19:47:42 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,3 @@ char	*ft_strtrim(char const *s1, char const *set)
 	new = ft_substr(s1, 0, newlen + 1);
 	return (new);
 }
-
-// int main()
-// {
-//     char s1[] = "";
-//     printf("%s", ft_strtrim(s1, ""));
-// }
