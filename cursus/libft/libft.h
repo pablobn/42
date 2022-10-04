@@ -6,7 +6,7 @@
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 15:33:51 by pbengoec          #+#    #+#             */
-/*   Updated: 2022/10/03 13:04:23 by pbengoec         ###   ########.fr       */
+/*   Updated: 2022/10/04 16:14:52 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stddef.h>
 # include <stdlib.h>
+# include <unistd.h>
 # include <stdio.h>
 
 // The isalnum() function returns zero if the character tests false and
@@ -91,4 +92,27 @@ char	*ft_strtrim(char const *s1, char const *set);
 // Convert an string to an array of strings 
 // with the char c as delimiter
 char	**ft_split(char const *s, char c);
+// Convert int to string
+char	*ft_itoa(int n);
+// To each character of the string 's', apply the
+// function 'f' giving as parameters the index of each
+// character inside 's' and the character itself. Generate
+// a new string with the result of successive use
+// of 'f'
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
+// To each character of the string 's', apply the function
+// 'f' giving as parameters the index of each
+// character inside 's' and the address of the itself
+// character, which can be modified if necessary.
+void	ft_striteri(char *s, void (*f)(unsigned int, char*));
+// Send character 'c' to file descriptor
+// specified.
+void	ft_putchar_fd(char c, int fd);
+// Send the string 's' to the file descriptor
+// specified.
+void	ft_putstr_fd(char *s, int fd);
+// Send the string 's' to the given file descriptor,
+// followed by a line break.
+void	ft_putendl_fd(char *s, int fd);
+void	ft_putnbr_fd(int n, int fd);
 #endif

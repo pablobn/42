@@ -6,7 +6,7 @@
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 16:38:36 by pbengoec          #+#    #+#             */
-/*   Updated: 2022/10/03 21:03:03 by pbengoec         ###   ########.fr       */
+/*   Updated: 2022/10/03 21:09:50 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,3 @@ char	**ft_split(char const *s, char c)
 	split = ft_splitpriv(s, c, 0, split);
 	return (split);
 }
-
-// int main()
-// {
-// 	printf("%s", ft_split("hello!", ' ')[0]);
-// }
