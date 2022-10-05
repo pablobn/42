@@ -6,7 +6,7 @@
 #    By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/21 15:45:05 by pbengoec          #+#    #+#              #
-#    Updated: 2022/10/04 18:29:36 by pbengoec         ###   ########.fr        #
+#    Updated: 2022/10/05 17:10:53 by pbengoec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,8 @@ SRCS		= ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c ft_strl
 			  ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putendl_fd.c ft_putnbr_fd.c
 
 
-BONUSSRCS	= ft_lstnew.c
+BONUSSRCS	= ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c ft_lstlast_bonus.c\
+			  ft_lstadd_back_bonus.c
 
 OBJS		= ${SRCS:.c=.o}
 
@@ -32,16 +33,17 @@ ${NAME}	:
 			ar crs ${NAME} ${OBJS}
 
 bonus	:
-			${CC} -c ${CFLAGS} ${BONUSSRCS}
+			${CC} -c ${CFLAGS} ${SRCS} ${BONUSSRCS} 
 			ar crs ${NAME} ${BONUSOBJS} ${OBJS}
 
 all		:	${NAME}
 
 clean	:
-		${RM} ${OBJS} ${BONUSOBJS}
+		${RM} ${OBJS} 
+		${RM} -f ${BONUSOBJS}
 	
 fclean	:	clean
-		${RM} ${NAME}
+		${RM} -f ${NAME}
 
 re		:	fclean all
 
