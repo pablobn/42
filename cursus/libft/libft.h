@@ -6,7 +6,7 @@
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 15:33:51 by pbengoec          #+#    #+#             */
-/*   Updated: 2022/10/05 17:12:32 by pbengoec         ###   ########.fr       */
+/*   Updated: 2022/10/05 19:40:16 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <stddef.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include <stdio.h>
 
 typedef struct s_list
 {
@@ -134,4 +133,24 @@ int		ft_lstsize(t_list *lst);
 t_list	*ft_lstlast(t_list *lst);
 //Add the 'new' node to the end of the 'lst' list.
 void	ft_lstadd_back(t_list **lst, t_list *new);
+//Takes an 'lst' node as a parameter and releases the
+//memory of the content using the ’del’ function
+//given as a parameter, in addition to freeing the node. The
+//memory of 'next' should not be freed.
+void	ft_lstdelone(t_list *lst, void (*del)(void *));
+//Remove and free the given 'lst' node and all
+//consecutive from that node, using the function
+//'del' and free(3).
+//At the end, the pointer to the list must be NULL.
+void	ft_lstclear(t_list **lst, void (*del)(void *));
+//Iterate over the 'lst' list and apply the 'f' function on the
+//content of each node.
+void	ft_lstiter(t_list *lst, void (*f)(void *));
+//Iterates the 'lst' list and applies the 'f' function to the
+//content of each node. Create a resulting list
+//of the correct and successive application of the function
+//'f' over each node. The 'del' function is used
+//to remove the contents of a node, if you do
+//lack.
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 #endif

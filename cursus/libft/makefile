@@ -6,7 +6,7 @@
 #    By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/21 15:45:05 by pbengoec          #+#    #+#              #
-#    Updated: 2022/10/05 17:10:53 by pbengoec         ###   ########.fr        #
+#    Updated: 2022/10/05 20:51:09 by pbengoec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,8 @@ SRCS		= ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c ft_strl
 
 
 BONUSSRCS	= ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c ft_lstlast_bonus.c\
-			  ft_lstadd_back_bonus.c
+			  ft_lstadd_back_bonus.c ft_lstdelone_bonus.c ft_lstclear_bonus.c ft_lstiter_bonus.c\
+			  ft_lstmap_bonus.c
 
 OBJS		= ${SRCS:.c=.o}
 
@@ -47,4 +48,4 @@ fclean	:	clean
 
 re		:	fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus
