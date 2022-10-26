@@ -6,14 +6,13 @@
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 17:38:49 by pbengoec          #+#    #+#             */
-/*   Updated: 2022/10/11 15:59:55 by pbengoec         ###   ########.fr       */
+/*   Updated: 2022/10/13 16:03:51 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef  FT_PRINTF_H
 # define FT_PRINTF_H
 # include <stdarg.h>
-# include <stdio.h>
 # include <unistd.h>
 
 void	ft_putstr_fd(char *s, int fd, int *cont);
