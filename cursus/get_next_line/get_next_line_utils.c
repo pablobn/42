@@ -6,7 +6,7 @@
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 15:33:13 by pbengoec          #+#    #+#             */
-/*   Updated: 2022/10/25 20:19:51 by pbengoec         ###   ########.fr       */
+/*   Updated: 2022/11/03 12:58:52 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,20 +68,21 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	char	*new;
 	size_t	sum;
 
+	if (s1 == NULL)
+			s1 = ft_strdup("");
 	sum = ft_strlen(s1) + ft_strlen(s2) + 1;
 	new = malloc(sum * sizeof(char));
 	if (new == 0)
 		return (0);
 	ft_strlcpy(new, s1, sum);
 	ft_strlcat(new, s2, sum);
-	new[sum] = '\0';
 	return (new);
 }
 
 char	*ft_strdup(const char *s1)
 {
 	char	*copy;
-	
+
 	copy = (char *) malloc(ft_strlen(s1) + 1);
 	if (copy == 0)
 		return (0);
@@ -89,23 +90,15 @@ char	*ft_strdup(const char *s1)
 	return (copy);
 }
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
-{
-	char	*substr;
-	size_t	strlen;
-	size_t	memory;
-
-	strlen = ft_strlen(s);
-	memory = strlen + 1 - start;
-	if (start > strlen || strlen == 0)
-		return (ft_strdup(""));
-	if (len + start < strlen + 1)
-		memory = len + 1;
-	else if (len == strlen + 1)
-		memory = len;
-	substr = malloc(memory * sizeof(char));
-	if (substr == 0)
-		return (0);
-	ft_strlcpy(substr, &s[start], memory);
-	return (substr);
+char	*ft_strchr(const char *s, int c)
+{	
+	while (*s)
+	{
+		if (*s == (char)c)
+			return ((char *) &*s);
+		s++;
+	}
+	if ((char)c == *s)
+		return ((char *) &*s);
+	return (NULL);
 }
