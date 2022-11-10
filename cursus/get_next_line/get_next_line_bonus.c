@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 20:15:10 by pbengoec          #+#    #+#             */
-/*   Updated: 2022/11/10 18:01:00 by pbengoec         ###   ########.fr       */
+/*   Updated: 2022/11/09 17:20:43 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 static char	*ft_get_line(int fd, char *str)
 {
@@ -89,20 +89,15 @@ static char	*ft_new_str(char *str)
 
 char	*get_next_line(int fd)
 {
-	static char	*str;
+	static char	*str[4096];
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	str = ft_get_line(fd, str);
-	if (str == NULL)
+	str[fd] = ft_get_line(fd, str[fd]);
+	if (str[fd] == NULL)
 		return (NULL);
-	line = ft_cut_line(str);
-	str = ft_new_str(str);
+	line = ft_cut_line(str[fd]);
+	str[fd] = ft_new_str(str[fd]);
 	return (line);
-}
-
-int	main()
-{
-	fd = open(hola.txt, )
 }
