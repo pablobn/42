@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/30 16:18:17 by pbengoec          #+#    #+#             */
-/*   Updated: 2022/09/30 17:08:09 by pbengoec         ###   ########.fr       */
+/*   Created: 2022/09/21 16:02:40 by pbengoec          #+#    #+#             */
+/*   Updated: 2022/09/21 20:25:22 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s1)
+int	ft_isalnum(int c)
 {
-	char	*copy;
-
-	copy = (char *) malloc(ft_strlen(s1) + 1);
-	if (copy == 0)
-		return (0);
-	ft_strlcpy(copy, s1, ft_strlen(s1) + 1);
-	return (copy);
+	if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122) || (c >= 48 && c <= 57))
+	{
+		return (1);
+	}
+	return (0);
 }
+
+// int main()
+// {
+// 	printf("Function is alnum value = '0' \n");
+// 	printf("Solution: %d\n",ft_isalnum('0'));
+// }

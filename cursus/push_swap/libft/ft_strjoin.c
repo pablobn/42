@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/30 16:18:17 by pbengoec          #+#    #+#             */
-/*   Updated: 2022/09/30 17:08:09 by pbengoec         ###   ########.fr       */
+/*   Created: 2022/09/30 19:06:02 by pbengoec          #+#    #+#             */
+/*   Updated: 2022/09/30 19:31:51 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s1)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*copy;
+	char	*new;
+	size_t	sum;
 
-	copy = (char *) malloc(ft_strlen(s1) + 1);
-	if (copy == 0)
+	sum = ft_strlen(s1) + ft_strlen(s2) + 1;
+	new = ft_calloc(sum, sizeof(char));
+	if (new == 0)
 		return (0);
-	ft_strlcpy(copy, s1, ft_strlen(s1) + 1);
-	return (copy);
+	ft_strlcpy(new, s1, sum);
+	ft_strlcat(new, s2, sum);
+	return (new);
 }

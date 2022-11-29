@@ -5,36 +5,38 @@
 #                                                     +:+ +:+         +:+      #
 #    By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/10/06 16:38:46 by pbengoec          #+#    #+#              #
-#    Updated: 2022/11/20 20:05:11 by pbengoec         ###   ########.fr        #
+#    Created: 2022/09/21 15:45:05 by pbengoec          #+#    #+#              #
+#    Updated: 2022/11/24 20:08:48 by pbengoec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= libftprintf.a
-
+NAME		= push_swap
 CC			= gcc
-
 CFLAGS		= -Werror -Wall -Wextra
-
 RM			= rm -f
-
-SRCS		= ft_printf.c ft_putchar_fd.c ft_switch.c ft_putstr_fd.c\
-			ft_putnbr_fd.c ft_putnbr_fd_unsigned.c ft_conver_hexa.c\
-
+AR			= ar -rcs
+SRCS		= ft_push_swap.c main.c
+MAIN		= main.c
+LIBFT		= libft/libft.a
 OBJS		= ${SRCS:.c=.o}
 
 ${NAME}	:
-			${CC} -c ${CFLAGS} ${SRCS} 
-			ar crs ${NAME} ${OBJS}
+			@${MAKE} -C libft/
+			${CC} -c ${CFLAGS} ${SRCS}
+			mv ${LIBFT} ${NAME}
+			${AR} ${NAME} ${OBJS}
+			${CC} ${MAIN} ${NAME} -o ${NAME}
 
 all		:	${NAME}
 
 clean	:
-		${RM} ${OBJS} 
-	
+		@${MAKE} -C libft/ clean
+		${RM} ${OBJS}
+
 fclean	:	clean
 		${RM} -f ${NAME}
+		@${MAKE} -C libft/ fclean
 
 re		:	fclean all
 
-.PHONY: all clean fclean re
+.PHONY: re fclean clean all 

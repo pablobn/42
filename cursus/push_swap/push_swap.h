@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/30 16:18:17 by pbengoec          #+#    #+#             */
-/*   Updated: 2022/09/30 17:08:09 by pbengoec         ###   ########.fr       */
+/*   Created: 2022/11/20 19:32:25 by pbengoec          #+#    #+#             */
+/*   Updated: 2022/11/29 17:44:46 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef  FT_PUSH_SWAP_H
+# define FT_PUSH_SWAP_H
+# include "libft/libft.h"
+# include <stdio.h>
+# include <stdarg.h>
 
-char	*ft_strdup(const char *s1)
+typedef struct stack
 {
-	char	*copy;
+	int				value;
+	struct stack	*next;
+}t_stack;
 
-	copy = (char *) malloc(ft_strlen(s1) + 1);
-	if (copy == 0)
-		return (0);
-	ft_strlcpy(copy, s1, ft_strlen(s1) + 1);
-	return (copy);
-}
+void	ft_push_swap();
+int		main(int argc, char **argv);
+
+#endif

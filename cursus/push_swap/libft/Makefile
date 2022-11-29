@@ -6,7 +6,7 @@
 #    By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/21 15:45:05 by pbengoec          #+#    #+#              #
-#    Updated: 2022/10/05 20:51:09 by pbengoec         ###   ########.fr        #
+#    Updated: 2022/11/24 19:33:05 by pbengoec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,21 +30,21 @@ OBJS		= ${SRCS:.c=.o}
 BONUSOBJS	= ${BONUSSRCS:.c=.o}	
 
 ${NAME}	:
-			${CC} -c ${CFLAGS} ${SRCS} 
-			ar crs ${NAME} ${OBJS}
+			@${CC} -c ${CFLAGS} ${SRCS} 
+			@ar crs ${NAME} ${OBJS}
 
 bonus	:
-			${CC} -c ${CFLAGS} ${SRCS} ${BONUSSRCS} 
-			ar crs ${NAME} ${BONUSOBJS} ${OBJS}
+			@${CC} -c ${CFLAGS} ${SRCS} ${BONUSSRCS} 
+			@ar crs ${NAME} ${BONUSOBJS} ${OBJS}
 
 all		:	${NAME}
 
 clean	:
-		${RM} ${OBJS} 
-		${RM} -f ${BONUSOBJS}
+		@${RM} ${OBJS} 
+		@${RM} -f ${BONUSOBJS}
 	
 fclean	:	clean
-		${RM} -f ${NAME}
+		@${RM} -f ${NAME}
 
 re		:	fclean all
 

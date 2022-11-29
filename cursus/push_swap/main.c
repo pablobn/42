@@ -1,24 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/30 16:18:17 by pbengoec          #+#    #+#             */
-/*   Updated: 2022/09/30 17:08:09 by pbengoec         ###   ########.fr       */
+/*   Created: 2022/11/20 19:43:41 by pbengoec          #+#    #+#             */
+/*   Updated: 2022/11/29 17:44:30 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-char	*ft_strdup(const char *s1)
+void	insert_node(t_stack **stack, int dato)
 {
-	char	*copy;
+	t_stack	*new;
+	new = malloc(sizeof(t_stack));
+	new->value = dato;
+	new->next = *stack;
+	*stack = new;
+}
 
-	copy = (char *) malloc(ft_strlen(s1) + 1);
-	if (copy == 0)
-		return (0);
-	ft_strlcpy(copy, s1, ft_strlen(s1) + 1);
-	return (copy);
+int	main()
+{
+	t_stack *a = NULL;
+	t_stack *b = NULL;
+	int i;
+
+	i = 5;
+	insert_node(&a, 53);
+	printf("%d\n", a->value);
+	insert_node(&b, 234);
+	printf("%d\n", b->value);
+	return (0);
 }
