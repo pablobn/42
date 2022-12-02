@@ -6,7 +6,7 @@
 #    By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/21 15:45:05 by pbengoec          #+#    #+#              #
-#    Updated: 2022/11/24 19:33:05 by pbengoec         ###   ########.fr        #
+#    Updated: 2022/12/01 17:58:03 by pbengoec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ BONUSOBJS	= ${BONUSSRCS:.c=.o}
 ${NAME}	:
 			@${CC} -c ${CFLAGS} ${SRCS} 
 			@ar crs ${NAME} ${OBJS}
+			@echo "Compiled libft"
 
 bonus	:
 			@${CC} -c ${CFLAGS} ${SRCS} ${BONUSSRCS} 
@@ -45,6 +46,7 @@ clean	:
 	
 fclean	:	clean
 		@${RM} -f ${NAME}
+		@echo "Cleaned libft"
 
 re		:	fclean all
 

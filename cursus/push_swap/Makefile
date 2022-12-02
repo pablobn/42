@@ -6,7 +6,7 @@
 #    By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/21 15:45:05 by pbengoec          #+#    #+#              #
-#    Updated: 2022/11/24 20:08:48 by pbengoec         ###   ########.fr        #
+#    Updated: 2022/12/01 17:56:52 by pbengoec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,20 +22,21 @@ OBJS		= ${SRCS:.c=.o}
 
 ${NAME}	:
 			@${MAKE} -C libft/
-			${CC} -c ${CFLAGS} ${SRCS}
-			mv ${LIBFT} ${NAME}
-			${AR} ${NAME} ${OBJS}
-			${CC} ${MAIN} ${NAME} -o ${NAME}
-
+			@${CC} -c ${CFLAGS} ${SRCS}
+			@mv ${LIBFT} ${NAME}
+			@${AR} ${NAME} ${OBJS}
+			@${CC} ${MAIN} ${NAME} -o ${NAME}
+			@echo "Compiled push_swap"
 all		:	${NAME}
 
 clean	:
 		@${MAKE} -C libft/ clean
-		${RM} ${OBJS}
+		@${RM} ${OBJS}
 
 fclean	:	clean
-		${RM} -f ${NAME}
+		@${RM} -f ${NAME}
 		@${MAKE} -C libft/ fclean
+		@echo "Cleaned push_swap"
 
 re		:	fclean all
 
