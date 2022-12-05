@@ -6,7 +6,7 @@
 #    By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/21 15:45:05 by pbengoec          #+#    #+#              #
-#    Updated: 2022/12/01 17:58:03 by pbengoec         ###   ########.fr        #
+#    Updated: 2022/12/05 17:31:04 by pbengoec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,29 +20,17 @@ SRCS		= ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c ft_strl
 			  ft_substr.c ft_strjoin.c ft_strtrim.c ft_split.c ft_itoa.c ft_strmapi.c ft_striteri.c\
 			  ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putendl_fd.c ft_putnbr_fd.c
 
-
-BONUSSRCS	= ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c ft_lstlast_bonus.c\
-			  ft_lstadd_back_bonus.c ft_lstdelone_bonus.c ft_lstclear_bonus.c ft_lstiter_bonus.c\
-			  ft_lstmap_bonus.c
-
 OBJS		= ${SRCS:.c=.o}
-
-BONUSOBJS	= ${BONUSSRCS:.c=.o}	
 
 ${NAME}	:
 			@${CC} -c ${CFLAGS} ${SRCS} 
 			@ar crs ${NAME} ${OBJS}
 			@echo "Compiled libft"
 
-bonus	:
-			@${CC} -c ${CFLAGS} ${SRCS} ${BONUSSRCS} 
-			@ar crs ${NAME} ${BONUSOBJS} ${OBJS}
-
 all		:	${NAME}
 
 clean	:
 		@${RM} ${OBJS} 
-		@${RM} -f ${BONUSOBJS}
 	
 fclean	:	clean
 		@${RM} -f ${NAME}
@@ -50,4 +38,4 @@ fclean	:	clean
 
 re		:	fclean all
 
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re

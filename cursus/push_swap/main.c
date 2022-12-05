@@ -6,77 +6,85 @@
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 19:43:41 by pbengoec          #+#    #+#             */
-/*   Updated: 2022/12/02 19:39:36 by pbengoec         ###   ########.fr       */
+/*   Updated: 2022/12/05 20:58:45 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	insert_node(t_stack **stack, int dato)
-{
-	t_stack	*new;
-	new = malloc(sizeof(t_stack));
-	new->value = dato;
-	new->next = *stack;
-	*stack = new;
-}
-
-void	show_node(t_stack *a)
-{
-	if (a == NULL)
-		return ;
-	printf("%d\n", a->value);
-	show_node(a->next);
-}
-
-int	take_digit(char *str, t_stack **stack)
+void	free_split(char **split)
 {
 	int	i;
-	int j;
-	int flag;
 
 	i = 0;
-	flag = 1;
-	while (str[i] == ' '|| str[i] == '\t' || str[i] == '\n')
+	while (split[i])
+	{
+		free(split[i]);
 		i++;
-	j = i;
-	while (str[j] && str[j] != ' ' && str[j] != '\t' && str[j] != '\n' && flag)
-	{
-		if (str[j] < '0' || str[j] > '9')
-			flag = 0;
-		j++;
 	}
-	if (flag)
+	free(split);
+}
+
+int	ft_isvalid_str(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
 	{
-		printf("%d\n", flag);
-		insert_node(stack, ft_atoi(&str[i]));
-		if (str[j] != '\0')
-			take_digit(&str[j], stack);
+		if (i == 0 && (str[i] == '-' || str[i] == '+'))
+			i++;
+		if (!ft_isdigit(str[i]))
+			return (1);
+		i++;
 	}
-	else
-		return (0);
-	return (1);
+	return (0);
+}
+
+int	valid_digit(char *str, t_stack **stack)
+{
+	char	**split;
+	int		i;
+
+	split = ft_split(str, ' ');
+	if (!split[0])
+		return (free(split), 0);
+	i = 0;
+	while (split[i])
+	{
+		if (ft_isvalid_str(split[i]))
+			return (free_split(split), 0);
+		if (repetitive_node(stack, ft_atoi(split[i])))
+			return (free_split(split), 0);
+		insert_node(stack, ft_atoi(split[i]));
+		i++;
+	}
+	return (free_split(split), 1);
 }
 
 int	main(int argc, char **argv)
 {
-	t_stack *a = NULL;
-	int i;
-	int valid;
-	
+	t_stack	*a;
+	int		i;
+	int		valid;
+
 	valid = 1;
+	a = NULL;
 	if (argc > 1)
 	{
-		i = 1;
-		while (argv[i] && valid)
+		i = argc - 1;
+		while (i >= 1 && valid)
 		{
-			valid = take_digit(argv[i], &a);
-			i++;
+			valid = valid_digit(argv[i], &a);
+			i--;
 		}
 		if (valid)
 			show_node(a);
 		else
-			printf("Error\n");
+		{
+			ft_putstr_fd("Error\n", 2);
+			return (255);
+		}
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 15:33:51 by pbengoec          #+#    #+#             */
-/*   Updated: 2022/10/05 19:40:16 by pbengoec         ###   ########.fr       */
+/*   Updated: 2022/12/05 17:31:38 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,37 +120,4 @@ void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 // Send the number 'n' to the given file descriptor.
 void	ft_putnbr_fd(int n, int fd);
-// Create a new node using malloc(3). The
-// member variable 'content' is initialized with the
-// content of the 'content' parameter. The variable
-// 'next', with NULL.
-t_list	*ft_lstnew(void *content);
-// Añade el nodo ’new’ al principio de la lista ’lst’.
-void	ft_lstadd_front(t_list **lst, t_list *new);
-// Counts the number of nodes in a list.
-int		ft_lstsize(t_list *lst);
-//Returns the last node in the list.
-t_list	*ft_lstlast(t_list *lst);
-//Add the 'new' node to the end of the 'lst' list.
-void	ft_lstadd_back(t_list **lst, t_list *new);
-//Takes an 'lst' node as a parameter and releases the
-//memory of the content using the ’del’ function
-//given as a parameter, in addition to freeing the node. The
-//memory of 'next' should not be freed.
-void	ft_lstdelone(t_list *lst, void (*del)(void *));
-//Remove and free the given 'lst' node and all
-//consecutive from that node, using the function
-//'del' and free(3).
-//At the end, the pointer to the list must be NULL.
-void	ft_lstclear(t_list **lst, void (*del)(void *));
-//Iterate over the 'lst' list and apply the 'f' function on the
-//content of each node.
-void	ft_lstiter(t_list *lst, void (*f)(void *));
-//Iterates the 'lst' list and applies the 'f' function to the
-//content of each node. Create a resulting list
-//of the correct and successive application of the function
-//'f' over each node. The 'del' function is used
-//to remove the contents of a node, if you do
-//lack.
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 #endif
