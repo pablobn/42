@@ -6,7 +6,7 @@
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 20:46:46 by pbengoec          #+#    #+#             */
-/*   Updated: 2022/12/05 20:54:05 by pbengoec         ###   ########.fr       */
+/*   Updated: 2022/12/05 21:14:01 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,6 @@ void	show_node(t_stack *a)
 {
 	if (a == NULL)
 		return ;
-	printf("%d\n", a->value);
+	// printf("%d\n", a->value);
 	show_node(a->next);
 }

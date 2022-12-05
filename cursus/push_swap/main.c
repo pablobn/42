@@ -6,7 +6,7 @@
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 19:43:41 by pbengoec          #+#    #+#             */
-/*   Updated: 2022/12/05 20:58:45 by pbengoec         ###   ########.fr       */
+/*   Updated: 2022/12/05 21:18:44 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,45 @@ void	free_split(char **split)
 	free(split);
 }
 
+int	ft_bigger_int(char *str)
+{
+	int		i;
+	size_t	len;
+	char	*n;
+
+	i = 0;
+	n = "2147483648";
+	if (str[0] == '+' || str[0] == '-')
+	{
+		if (str[i] == '-')
+			n = "2147483649";
+		i++;
+	}
+	while (str[i] && str[i] == '0')
+		i++;
+	len = ft_strlen(&str[i]);
+	if (len < 10)
+		return (0);
+	if (len == 10)
+	{
+		while (*n)
+		{
+			if (str[i] < *n)
+				return (0);
+			i++;
+			n++;
+		}
+	}
+	return (1);
+}
+
 int	ft_isvalid_str(char *str)
 {
 	int	i;
 
 	i = 0;
+	if (ft_bigger_int(str))
+		return (1);
 	while (str[i])
 	{
 		if (i == 0 && (str[i] == '-' || str[i] == '+'))
@@ -81,10 +115,7 @@ int	main(int argc, char **argv)
 		if (valid)
 			show_node(a);
 		else
-		{
-			ft_putstr_fd("Error\n", 2);
-			return (255);
-		}
+			return (ft_putstr_fd("Error\n", 2), 255);
 	}
 	return (0);
 }
