@@ -6,7 +6,7 @@
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 19:43:41 by pbengoec          #+#    #+#             */
-/*   Updated: 2022/12/05 21:18:44 by pbengoec         ###   ########.fr       */
+/*   Updated: 2022/12/09 17:34:01 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ int	main(int argc, char **argv)
 			i--;
 		}
 		if (valid)
-			show_node(a);
+			ft_push_swap(&a);
 		else
 			return (ft_putstr_fd("Error\n", 2), 255);
 	}

@@ -6,7 +6,7 @@
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 20:46:46 by pbengoec          #+#    #+#             */
-/*   Updated: 2022/12/05 21:14:01 by pbengoec         ###   ########.fr       */
+/*   Updated: 2022/12/13 18:10:59 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,89 @@ int	repetitive_node(t_stack **stack, int dato)
 	return (0);
 }
 
+void	ft_order_array(int *ar, int size)
+{
+	int	ord;
+	int	i;
+	int	swap;
+
+	ord = 1;
+	while (ord)
+	{
+		ord = 0;
+		i = 0;
+		while (i < size)
+		{
+			if (ar[i] > ar[i + 1])
+			{
+				swap = ar[i];
+				ar[i] = ar[i + 1];
+				ar[i + 1] = swap;
+				ord = 1;
+			}
+			i++;
+		}
+	}
+}
+
+void	ft_order_list(t_stack **a, int *ar)
+{
+	t_stack	*c;
+	int		i;
+	int		flag;
+
+	i = 0;
+	c = a[0];
+	while (i < ft_list_size(a))
+	{
+		flag = 1;
+		while (c && flag)
+		{
+			if (c->value == ar[i])
+			{
+				c->position = i;
+				flag = 0;
+			}
+			c = c->next;
+		}
+		c = a[0];
+		i++;
+	}
+}
+
+void	ft_give_index(t_stack **a)
+{
+	t_stack	*c;
+	int		*ar;
+	int		i;
+
+	ar = malloc(sizeof(int) * ft_list_size(a) + 1);
+	if (!ar)
+		return ;
+	i = 0;
+	c = a[0];
+	while (c)
+	{
+		ar[i] = c->value;
+		c = c->next;
+		i++;
+	}
+	ar[i] = '\0';
+	ft_order_array(ar, ft_list_size(a) - 1);
+	ft_order_list(a, ar);
+	free(ar);
+} 
+
 void	show_node(t_stack *a)
 {
-	if (a == NULL)
-		return ;
-	// printf("%d\n", a->value);
-	show_node(a->next);
+	int	i;
+
+	i = 0;
+	while (a)
+	{
+		a->current = i;
+		printf("Value %d Current %d Position %d\n", a->value, a->current, a->position);
+		a = a->next;
+		i++;
+	}
 }
