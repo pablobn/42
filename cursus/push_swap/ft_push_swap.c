@@ -6,7 +6,7 @@
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 19:37:08 by pbengoec          #+#    #+#             */
-/*   Updated: 2022/12/15 20:21:22 by pbengoec         ###   ########.fr       */
+/*   Updated: 2022/12/17 20:47:00 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,56 @@ int	valid_list(t_stack **a)
 	return (0);
 }
 
-void	ft_ord_three(t_stack **a)
+void	ft_ord_three(t_stack **a, int num)
 {
 	t_stack	*c;
 
 	c = a[0];
-	if (c->position - 1 == c->next->position)
-		ft_swap(&c);
-	if (c->position - 1 > c->next->position)
-		ft_reverse_rotate(&c);
-	if (c->next->position > c->next->next->position)
-		ft_rotate(&c);
+	if (c->position > c->next->position
+		&& c->position > c->next->next->position)
+		ft_reverse_rotate(&c, num);
+	else if (c->next->position > c->position
+		&& c->next->position > c->next->next->position)
+		ft_rotate(&c, num);
+	if (c->position > c->next->position)
+		ft_swap(&c, num);
 	a[0] = c;
+}
+
+void	ft_move_positions(t_stack **a, t_stack **b)
+{
+	int		min;
+	t_stack	*c;
+	t_stack	*pos;
+
+	c = b[0];
+	pos = c;
+	min = c->calc;
+	while (c)
+	{
+		if (c->calc < min)
+		{
+			min = c->calc;
+			pos = c->current;
+		}
+	}
+	if (pos->other->dir == pos->dir)
+	{
+		if (pos->dir == 0)
+		{
+			if (pos->dir > pos->other->dir)
+			{
+				while (pos->move > 0)
+				{
+					if (pos->other->move > 0)
+						ft_rotate(b, 2);
+					else
+						ft_rotate(b, 1);
+					pos->move = pos->move - 1;
+				}
+			}
+		}
+	}
 }
 
 void	ft_push_swap(t_stack **a)
@@ -53,14 +91,25 @@ void	ft_push_swap(t_stack **a)
 
 	b = NULL;
 	ft_give_index(a);
-	while (!valid_list(a))
+	while (ft_list_size(a) > 3)
 	{
-		show_node(a[0]);
-		if (ft_list_size(a) <= 3)
-			ft_ord_three(a);
-		else
-			break ;
+		ft_give_current_place(a[0]);
+		ft_push_list(a, &b, 0);
+		ft_give_current_place(b);
 	}
-	printf("\nLISTA FINAL\n\n");
+	ft_ord_three(a, 0);
+	ft_give_current_place(a[0]);
+	ft_calcular_movimientos(a, b);
+	while (ft_list_size(&b))
+	{
+		ft_move_positions(a, &b);
+		ft_push_list(&b, a, 1);
+		ft_give_current_place(a[0]);
+		ft_give_current_place(b);
+		ft_calcular_movimientos(a, b);
+	}
+	printf("LISTA FINAL A");
 	show_node(a[0]);
+	printf("LISTA FINAL B");
+	show_node(b);
 }

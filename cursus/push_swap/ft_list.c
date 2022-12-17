@@ -6,7 +6,7 @@
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 20:46:46 by pbengoec          #+#    #+#             */
-/*   Updated: 2022/12/13 18:10:59 by pbengoec         ###   ########.fr       */
+/*   Updated: 2022/12/17 20:37:19 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,11 +114,91 @@ void	show_node(t_stack *a)
 	int	i;
 
 	i = 0;
+	printf("\n-------------");
+	while (a)
+	{
+		printf("\nValue %d Current %d Position %d Move %d  Dir %d Calculo %d\n", a->value, a->current, a->position, a->move, a->dir, a->calc);
+		a = a->next;
+		i++;
+	}
+	printf("-------------\n");
+}
+
+void	ft_give_current_place(t_stack *a)
+{
+	int	i;
+	int	j;
+	int	size;
+
+	i = 0;
+	j = 0;
+	size = ft_list_size(&a);
+	ft_give_direction(&a);
 	while (a)
 	{
 		a->current = i;
-		printf("Value %d Current %d Position %d\n", a->value, a->current, a->position);
+		a->move = j;
 		a = a->next;
 		i++;
+		if (i > size / 2)
+		{
+			if (size % 2 == 0 || i - 1 != size / 2)
+				j--;
+		}
+		else
+			j++;
+	}
+}
+
+void	ft_give_direction(t_stack **c)
+{
+	t_stack	*a;
+	int		size;
+	int		i;
+
+	a = c[0];
+	size = ft_list_size(&a);
+	i = 0;
+	while (a)
+	{
+		if (i > size / 2)
+			a->dir = 0;
+		else
+			a->dir = 1;
+		a = a->next;
+		i++;
+	}
+}
+
+void	ft_calcular_movimientos(t_stack **a, t_stack *b)
+{
+	int		calc;
+	int		min;
+	t_stack	*c;
+
+	while (b)
+	{
+		calc = b->move;
+		min = 2147483647;
+		c = a[0];
+		while (c)
+		{
+			if (c->position > b->position && c->position < min)
+			{
+				calc = c->move + b->move;
+				b->other = c;
+				if (c->dir == b->dir)
+				{
+					if (c->move >= b->move)
+						calc = c->move;
+					else
+						calc = b->move;
+				}
+				min = c->position;
+			}
+			c = c->next;
+		}
+		b->calc = calc;
+		b = b->next;
 	}
 }
