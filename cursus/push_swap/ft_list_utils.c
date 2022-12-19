@@ -6,7 +6,7 @@
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 14:30:15 by pbengoec          #+#    #+#             */
-/*   Updated: 2022/12/19 18:20:12 by pbengoec         ###   ########.fr       */
+/*   Updated: 2022/12/19 20:21:17 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	ft_swap(t_stack **a, int num)
 	else if (num == 1)
 		ft_putstr_fd("sb\n", 1);
 	else if (num == 2)
-		ft_putstr_fd("ss\n", 2);
+		ft_putstr_fd("ss\n", 1);
 }
 
 int	ft_list_size(t_stack **a)
@@ -77,7 +77,7 @@ void	ft_reverse_rotate(t_stack **a, int num)
 	else if (num == 1)
 		ft_putstr_fd("rb\n", 1);
 	else if (num == 2)
-		ft_putstr_fd("r\n", 2);
+		ft_putstr_fd("r\n", 1);
 }
 
 void	ft_rotate(t_stack **a, int num)
@@ -111,7 +111,7 @@ void	ft_rotate(t_stack **a, int num)
 	else if (num == 1)
 		ft_putstr_fd("rrb\n", 1);
 	else if (num == 2)
-		ft_putstr_fd("rr\n", 2);
+		ft_putstr_fd("rr\n", 1);
 }
 
 void	ft_push_list(t_stack **a, t_stack **b, int num)

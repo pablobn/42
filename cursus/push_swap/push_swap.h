@@ -6,7 +6,7 @@
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 19:32:25 by pbengoec          #+#    #+#             */
-/*   Updated: 2022/12/19 15:02:57 by pbengoec         ###   ########.fr       */
+/*   Updated: 2022/12/19 20:52:13 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,5 @@ void	ft_give_current_place(t_stack *a);
 void	ft_give_direction(t_stack **c);
 void	ft_calcular_movimientos(t_stack **a, t_stack *b);
 int		valid_list(t_stack **a);
+int		ft_list_find_bigger(t_stack *a, int num);
 #endif

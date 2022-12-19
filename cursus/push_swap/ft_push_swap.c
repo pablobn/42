@@ -6,7 +6,7 @@
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 19:37:08 by pbengoec          #+#    #+#             */
-/*   Updated: 2022/12/19 18:28:56 by pbengoec         ###   ########.fr       */
+/*   Updated: 2022/12/19 20:52:31 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	ft_move_positions(t_stack **a, t_stack **b)
 	}
 	if (pos->dir == pos->other_dir)
 	{
-		if (pos->dir > pos->other_dir)
+		if (pos->move > pos->other_move)
 		{
 			dif = pos->move - pos->other_move;
 			ft_change_positions(b, pos->dir, pos->move - dif, 2);
@@ -117,6 +117,8 @@ void	ft_push_swap(t_stack **a)
 		return ;
 	}
 	ft_give_index(a);
+	if (valid_list(a))
+		return ;
 	while (ft_list_size(a) > 3)
 	{
 		ft_give_current_place(a[0]);
@@ -130,8 +132,6 @@ void	ft_push_swap(t_stack **a)
 	{
 		ft_move_positions(a, &b);
 		ft_push_list(&b, a, 0);
-		if (a[0]->other_move == -1)
-			ft_reverse_rotate(a, 0);
 		ft_give_current_place(a[0]);
 		ft_give_current_place(b);
 		ft_calcular_movimientos(a, b);
