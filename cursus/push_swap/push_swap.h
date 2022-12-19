@@ -6,7 +6,7 @@
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 19:32:25 by pbengoec          #+#    #+#             */
-/*   Updated: 2022/12/17 20:36:47 by pbengoec         ###   ########.fr       */
+/*   Updated: 2022/12/19 15:02:57 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ typedef struct stack
 	int				move;
 	int				calc;
 	int				dir;
-	t_stack			*other;
+	int				other_move;
+	int				other_dir;
 	struct stack	*next;
 }t_stack;
 

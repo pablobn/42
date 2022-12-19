@@ -6,7 +6,7 @@
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 19:43:41 by pbengoec          #+#    #+#             */
-/*   Updated: 2022/12/09 17:34:01 by pbengoec         ###   ########.fr       */
+/*   Updated: 2022/12/19 18:04:35 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,13 +85,16 @@ int	valid_digit(char *str, t_stack **stack)
 		return (free(split), 0);
 	i = 0;
 	while (split[i])
+		i++;
+	i--;
+	while (i >= 0)
 	{
 		if (ft_isvalid_str(split[i]))
 			return (free_split(split), 0);
 		if (repetitive_node(stack, ft_atoi(split[i])))
 			return (free_split(split), 0);
 		insert_node(stack, ft_atoi(split[i]));
-		i++;
+		i--;
 	}
 	return (free_split(split), 1);
 }

@@ -6,7 +6,7 @@
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 14:30:15 by pbengoec          #+#    #+#             */
-/*   Updated: 2022/12/17 16:45:18 by pbengoec         ###   ########.fr       */
+/*   Updated: 2022/12/19 18:20:12 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,11 +73,11 @@ void	ft_reverse_rotate(t_stack **a, int num)
 		temp->next = NULL;
 	}
 	if (num == 0)
-		ft_putstr_fd("rra\n", 1);
+		ft_putstr_fd("ra\n", 1);
 	else if (num == 1)
-		ft_putstr_fd("rrb\n", 1);
+		ft_putstr_fd("rb\n", 1);
 	else if (num == 2)
-		ft_putstr_fd("rr\n", 2);
+		ft_putstr_fd("r\n", 2);
 }
 
 void	ft_rotate(t_stack **a, int num)
@@ -107,11 +107,11 @@ void	ft_rotate(t_stack **a, int num)
 			index->next = NULL;
 	}
 	if (num == 0)
-		ft_putstr_fd("ra\n", 1);
+		ft_putstr_fd("rra\n", 1);
 	else if (num == 1)
-		ft_putstr_fd("rb\n", 1);
+		ft_putstr_fd("rrb\n", 1);
 	else if (num == 2)
-		ft_putstr_fd("r\n", 2);
+		ft_putstr_fd("rr\n", 2);
 }
 
 void	ft_push_list(t_stack **a, t_stack **b, int num)

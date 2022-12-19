@@ -6,7 +6,7 @@
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 20:46:46 by pbengoec          #+#    #+#             */
-/*   Updated: 2022/12/17 20:37:19 by pbengoec         ###   ########.fr       */
+/*   Updated: 2022/12/19 16:31:36 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ void	show_node(t_stack *a)
 	printf("\n-------------");
 	while (a)
 	{
-		printf("\nValue %d Current %d Position %d Move %d  Dir %d Calculo %d\n", a->value, a->current, a->position, a->move, a->dir, a->calc);
+		printf("\nValue %d Current %d Position %d Move %d Other Move %d Dir %d Calculo %d\n", a->value, a->current, a->position, a->move, a->other_move,a->dir, a->calc);
 		a = a->next;
 		i++;
 	}
@@ -179,6 +179,7 @@ void	ft_calcular_movimientos(t_stack **a, t_stack *b)
 	while (b)
 	{
 		calc = b->move;
+		b->other_move = -1;
 		min = 2147483647;
 		c = a[0];
 		while (c)
@@ -186,7 +187,8 @@ void	ft_calcular_movimientos(t_stack **a, t_stack *b)
 			if (c->position > b->position && c->position < min)
 			{
 				calc = c->move + b->move;
-				b->other = c;
+				b->other_dir = c->dir;
+				b->other_move = c->move;
 				if (c->dir == b->dir)
 				{
 					if (c->move >= b->move)
