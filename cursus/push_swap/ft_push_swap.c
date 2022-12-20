@@ -6,7 +6,7 @@
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 19:37:08 by pbengoec          #+#    #+#             */
-/*   Updated: 2022/12/20 18:53:17 by pbengoec         ###   ########.fr       */
+/*   Updated: 2022/12/20 19:30:31 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,8 +162,8 @@ void	ft_push_swap(t_stack **a)
 		else
 			ft_reverse_rotate(a, 0);
 	}
-	printf("LISTA FINAL A");
-	show_node(a[0]);
-	printf("LISTA FINAL B");
-	show_node(b);
+	// printf("LISTA FINAL A");
+	// show_node(a[0]);
+	// printf("LISTA FINAL B");
+	// show_node(b);
 }

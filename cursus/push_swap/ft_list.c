@@ -6,7 +6,7 @@
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 20:46:46 by pbengoec          #+#    #+#             */
-/*   Updated: 2022/12/20 17:58:05 by pbengoec         ###   ########.fr       */
+/*   Updated: 2022/12/20 19:30:48 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,39 +170,59 @@ void	ft_give_direction(t_stack **c)
 	}
 }
 
+void	ft_give_other_number(t_stack *a, t_stack *b)
+{
+	int	min;
+	int max;
+
+	min = 2147483647;
+	max = 2147483647;
+	while (a)
+	{
+		if (a->position > b->position && a->position < min && !b->find)
+		{
+			b->calc = a->move + b->move;
+			b->other_dir = a->dir;
+			b->other_move = a->move;
+			if (a->dir == b->dir)
+			{
+				if (a->move >= b->move)
+					b->calc = a->move;
+				else
+					b->calc = b->move;
+			}
+			min = a->position;
+		}
+		if (a->position < b->position && a->position < max && b->find)
+		{
+			b->calc = a->move + b->move;
+			b->other_dir = a->dir;
+			b->other_move = a->move;
+			if (a->dir == b->dir)
+			{
+				if (a->move >= b->move)
+					b->calc = a->move;
+				else
+					b->calc = b->move;
+			}
+			max = a->position;
+		}
+		a = a->next;
+	}
+	if (min == 2147483647)
+		b->find = 1;
+}
+
 void	ft_calcular_movimientos(t_stack **a, t_stack *b)
 {
-	int		calc;
-	int		min;
-	t_stack	*c;
-
 	while (b)
 	{
-		calc = 100;
+		b->find = 0;
+		b->calc = 0;
 		b->other_move = 0;
-		min = 2147483647;
-		c = a[0];
-		while (c)
-		{
-			if ((c->position > b->position && c->position < min)
-				|| (b->max && c->position < b->position
-					&& c->position < min))
-			{
-				calc = c->move + b->move;
-				b->other_dir = c->dir;
-				b->other_move = c->move;
-				if (c->dir == b->dir)
-				{
-					if (c->move >= b->move)
-						calc = c->move;
-					else
-						calc = b->move;
-				}
-				min = c->position;
-			}
-			c = c->next;
-		}
-		b->calc = calc;
+		ft_give_other_number(a[0], b);
+		if (b->find)
+			ft_give_other_number(a[0], b);
 		b = b->next;
 	}
 }

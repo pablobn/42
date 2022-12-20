@@ -6,7 +6,7 @@
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 19:32:25 by pbengoec          #+#    #+#             */
-/*   Updated: 2022/12/20 17:47:31 by pbengoec         ###   ########.fr       */
+/*   Updated: 2022/12/20 19:14:44 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ typedef struct stack
 	int				value;
 	int				position;
 	int				current;
+	int				find;
 	int				move;
 	int				calc;
 	int				dir;
