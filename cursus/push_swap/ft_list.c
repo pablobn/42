@@ -6,7 +6,7 @@
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 20:46:46 by pbengoec          #+#    #+#             */
-/*   Updated: 2022/12/19 20:54:20 by pbengoec         ###   ########.fr       */
+/*   Updated: 2022/12/20 17:58:05 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,17 +124,6 @@ void	show_node(t_stack *a)
 	printf("-------------\n");
 }
 
-int	ft_list_find_bigger(t_stack *a, int num)
-{
-	while (a)
-	{
-		if (num > a->position)
-			return (1);
-		a = a->next;
-	}
-	return (0);
-}
-
 void	ft_give_current_place(t_stack *a)
 {
 	int	i;
@@ -185,20 +174,18 @@ void	ft_calcular_movimientos(t_stack **a, t_stack *b)
 {
 	int		calc;
 	int		min;
-	int		max;
 	t_stack	*c;
 
 	while (b)
 	{
-		calc = b->move;
+		calc = 100;
 		b->other_move = 0;
-		max = 0;
 		min = 2147483647;
 		c = a[0];
 		while (c)
 		{
 			if ((c->position > b->position && c->position < min)
-				|| (max && c->position < b->position
+				|| (b->max && c->position < b->position
 					&& c->position < min))
 			{
 				calc = c->move + b->move;
