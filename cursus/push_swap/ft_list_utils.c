@@ -6,7 +6,7 @@
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 14:30:15 by pbengoec          #+#    #+#             */
-/*   Updated: 2022/12/20 18:44:58 by pbengoec         ###   ########.fr       */
+/*   Updated: 2023/01/12 14:32:47 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,19 +33,14 @@ void	ft_swap(t_stack **a, int num)
 		ft_putstr_fd("ss\n", 1);
 }
 
-int	ft_list_size(t_stack **a)
+static void	ft_print_reverse_rotate(int num)
 {
-	int		i;
-	t_stack	*temp;
-
-	i = 0;
-	temp = a[0];
-	while (temp)
-	{
-		temp = temp->next;
-		i++;
-	}
-	return (i);
+	if (num == 0)
+		ft_putstr_fd("ra\n", 1);
+	else if (num == 1)
+		ft_putstr_fd("rb\n", 1);
+	else if (num == 2)
+		ft_putstr_fd("rr\n", 1);
 }
 
 void	ft_reverse_rotate(t_stack **a, int num)
@@ -64,7 +59,7 @@ void	ft_reverse_rotate(t_stack **a, int num)
 			return ;
 		if (a[0]->next == last)
 		{
-			ft_swap(a, 10);
+			ft_swap(a, num);
 			return ;
 		}
 		temp = a[0];
@@ -72,12 +67,17 @@ void	ft_reverse_rotate(t_stack **a, int num)
 		last->next = temp;
 		temp->next = NULL;
 	}
+	ft_print_reverse_rotate(num);
+}
+
+static void	ft_print_rotate(int num)
+{
 	if (num == 0)
-		ft_putstr_fd("ra\n", 1);
+		ft_putstr_fd("rra\n", 1);
 	else if (num == 1)
-		ft_putstr_fd("rb\n", 1);
+		ft_putstr_fd("rrb\n", 1);
 	else if (num == 2)
-		ft_putstr_fd("rr\n", 1);
+		ft_putstr_fd("rrr\n", 1);
 }
 
 void	ft_rotate(t_stack **a, int num)
@@ -98,7 +98,7 @@ void	ft_rotate(t_stack **a, int num)
 			return ;
 		if (a[0]->next == last)
 		{
-			ft_swap(a, 0);
+			ft_swap(a, num);
 			return ;
 		}
 			temp = a[0];
@@ -106,29 +106,5 @@ void	ft_rotate(t_stack **a, int num)
 			a[0]->next = temp;
 			index->next = NULL;
 	}
-	if (num == 0)
-		ft_putstr_fd("rra\n", 1);
-	else if (num == 1)
-		ft_putstr_fd("rrb\n", 1);
-	else if (num == 2)
-		ft_putstr_fd("rrr\n", 1);
-}
-
-void	ft_push_list(t_stack **a, t_stack **b, int num)
-{
-	t_stack	*push;
-	t_stack	*tmp;
-
-	if (a[0])
-	{
-		push = a[0];
-		tmp = b[0];
-		a[0] = a[0]->next;
-		b[0] = push;
-		push->next = tmp;
-	}
-	if (num == 0)
-		ft_putstr_fd("pa\n", 1);
-	else if (num == 1)
-		ft_putstr_fd("pb\n", 1);
+	ft_print_rotate(num);
 }

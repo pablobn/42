@@ -6,7 +6,7 @@
 #    By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/21 15:45:05 by pbengoec          #+#    #+#              #
-#    Updated: 2022/12/09 14:43:32 by pbengoec         ###   ########.fr        #
+#    Updated: 2023/01/12 14:55:10 by pbengoec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ CC			= gcc
 CFLAGS		= -Werror -Wall -Wextra
 RM			= rm -f
 AR			= ar -rcs
-SRCS		= ft_push_swap.c main.c ft_list.c ft_list_utils.c ft_push_swap.c
+SRCS		= ft_push_swap.c main.c ft_list_utils.c ft_list_utils_2.c ft_list_utils_3.c ft_list_utils_4.c ft_list_utils_5.c ft_push_swap.c
 MAIN		= main.c
 LIBFT		= libft/libft.a
 OBJS		= ${SRCS:.c=.o}

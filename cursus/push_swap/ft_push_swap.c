@@ -6,50 +6,13 @@
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 19:37:08 by pbengoec          #+#    #+#             */
-/*   Updated: 2022/12/20 19:30:31 by pbengoec         ###   ########.fr       */
+/*   Updated: 2023/01/12 14:54:21 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	valid_list(t_stack **a)
-{
-	t_stack	*c;
-	int		i;
-	int		flag;
-
-	i = 0;
-	c = a[0];
-	flag = 1;
-	while (c)
-	{
-		if (c->position != i)
-			flag = 0;
-		i++;
-		c = c->next;
-	}
-	if (flag)
-		return (1);
-	return (0);
-}
-
-void	ft_ord_three(t_stack **a, int num)
-{
-	t_stack	*c;
-
-	c = a[0];
-	if (c->position > c->next->position
-		&& c->position > c->next->next->position)
-		ft_reverse_rotate(&c, num);
-	else if (c->next->position > c->position
-		&& c->next->position > c->next->next->position)
-		ft_rotate(&c, num);
-	if (c->position > c->next->position)
-		ft_swap(&c, num);
-	a[0] = c;
-}
-
-void	ft_change_positions(t_stack **a, int dir, int move, int num)
+static void	ft_change_positions(t_stack **a, int dir, int move, int num)
 {
 	while (move > 0)
 	{
@@ -61,25 +24,8 @@ void	ft_change_positions(t_stack **a, int dir, int move, int num)
 	}
 }
 
-void	ft_move_positions(t_stack **a, t_stack **b)
+static void	ft_move_positions(t_stack *pos, t_stack **a, t_stack **b, int dif)
 {
-	int		min;
-	int		dif;
-	t_stack	*c;
-	t_stack	*pos;
-
-	c = b[0];
-	pos = c;
-	min = c->calc;
-	while (c)
-	{
-		if (c->calc < min)
-		{
-			min = c->calc;
-			pos = c;
-		}
-		c = c->next;
-	}
 	if (pos->dir == pos->other_dir)
 	{
 		if (pos->move > pos->other_move)
@@ -104,18 +50,49 @@ void	ft_move_positions(t_stack **a, t_stack **b)
 	}
 }
 
-void	ft_give_max(t_stack *a)
+void	ft_move_less_movement(t_stack **a, t_stack **b)
 {
-	t_stack	*max;
+	int		min;
+	int		dif;
+	t_stack	*c;
+	t_stack	*pos;
 
-	max = a;
-	while (a)
+	c = b[0];
+	pos = c;
+	min = c->calc;
+	dif = 0;
+	while (c)
 	{
-		if (a->position > max->position)
-			max = a;
-		a = a->next;		
+		if (c->calc < min)
+		{
+			min = c->calc;
+			pos = c;
+		}
+		c = c->next;
 	}
-	max->max = 1;
+	ft_move_positions(pos, a, b, dif);
+}
+
+static void	ft_push_b_to_a(t_stack **a, t_stack *b)
+{
+	ft_ord_three(a, 0);
+	ft_give_current_place(a[0]);
+	ft_calculate_movements(a, b);
+	while (ft_list_size(&b))
+	{
+		ft_move_less_movement(a, &b);
+		ft_push_list(&b, a, 0);
+		ft_give_current_place(a[0]);
+		ft_give_current_place(b);
+		ft_calculate_movements(a, b);
+	}
+	while (!ft_valid_list(a))
+	{
+		if (ft_list_size(a) / 2 >= a[0]->position)
+			ft_rotate(a, 0);
+		else
+			ft_reverse_rotate(a, 0);
+	}
 }
 
 void	ft_push_swap(t_stack **a)
@@ -132,7 +109,7 @@ void	ft_push_swap(t_stack **a)
 	}
 	ft_give_index(a);
 	ft_give_max(a[0]);
-	if (valid_list(a))
+	if (ft_valid_list(a))
 		return ;
 	while (ft_list_size(a) > 3)
 	{
@@ -140,30 +117,5 @@ void	ft_push_swap(t_stack **a)
 		ft_push_list(a, &b, 1);
 		ft_give_current_place(b);
 	}
-	ft_ord_three(a, 0);
-	ft_give_current_place(a[0]);
-	ft_calcular_movimientos(a, b);
-	while (ft_list_size(&b))
-	{
-		// printf("LISTA FINAL A");
-		// show_node(a[0]);
-		// printf("LISTA FINAL B");
-		// show_node(b);
-		ft_move_positions(a, &b);
-		ft_push_list(&b, a, 0);
-		ft_give_current_place(a[0]);
-		ft_give_current_place(b);
-		ft_calcular_movimientos(a, b);
-	}
-	while (!valid_list(a))
-	{
-		if (ft_list_size(a) / 2 >= a[0]->position)
-			ft_rotate(a, 0);
-		else
-			ft_reverse_rotate(a, 0);
-	}
-	// printf("LISTA FINAL A");
-	// show_node(a[0]);
-	// printf("LISTA FINAL B");
-	// show_node(b);
+	ft_push_b_to_a(a, b);
 }

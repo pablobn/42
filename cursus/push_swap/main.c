@@ -6,23 +6,20 @@
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 19:43:41 by pbengoec          #+#    #+#             */
-/*   Updated: 2022/12/19 18:04:35 by pbengoec         ###   ########.fr       */
+/*   Updated: 2023/01/12 15:02:24 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	free_split(char **split)
+static void	ft_change_sign(char *str, char **n, int *i)
 {
-	int	i;
-
-	i = 0;
-	while (split[i])
+	if (str[0] == '+' || str[0] == '-')
 	{
-		free(split[i]);
-		i++;
+		if (str[*i] == '-')
+			n[0] = "2147483649";
+		*i = 1;
 	}
-	free(split);
 }
 
 int	ft_bigger_int(char *str)
@@ -33,12 +30,7 @@ int	ft_bigger_int(char *str)
 
 	i = 0;
 	n = "2147483648";
-	if (str[0] == '+' || str[0] == '-')
-	{
-		if (str[i] == '-')
-			n = "2147483649";
-		i++;
-	}
+	ft_change_sign(str, &n, &i);
 	while (str[i] && str[i] == '0')
 		i++;
 	len = ft_strlen(&str[i]);
