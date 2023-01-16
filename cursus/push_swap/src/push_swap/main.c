@@ -6,7 +6,7 @@
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 19:43:41 by pbengoec          #+#    #+#             */
-/*   Updated: 2023/01/13 10:23:31 by pbengoec         ###   ########.fr       */
+/*   Updated: 2023/01/16 13:22:16 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,5 +112,5 @@ int	main(int argc, char **argv)
 		else
 			return (ft_putstr_fd("Error\n", 2), 255);
 	}
-	return (0);
+	return (free_list(a),0);
 }

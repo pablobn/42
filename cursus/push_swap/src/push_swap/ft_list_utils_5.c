@@ -6,7 +6,7 @@
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 14:50:53 by pbengoec          #+#    #+#             */
-/*   Updated: 2023/01/13 10:23:50 by pbengoec         ###   ########.fr       */
+/*   Updated: 2023/01/16 13:18:40 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,16 @@ void	ft_ord_three(t_stack **a, int num)
 	if (c->position > c->next->position)
 		ft_swap(&c, num);
 	a[0] = c;
+}
+
+void	free_list(t_stack *a)
+{
+	t_stack	*tmp;
+
+	while (a)
+	{
+		tmp = a;
+		a = a->next;
+		free(tmp);
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 19:32:25 by pbengoec          #+#    #+#             */
-/*   Updated: 2023/01/13 12:54:34 by pbengoec         ###   ########.fr       */
+/*   Updated: 2023/01/16 13:18:53 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,5 @@ void	ft_calculate_movements(t_stack **a, t_stack *b);
 int		ft_valid_list(t_stack **a);
 void	ft_give_max(t_stack *a);
 void	ft_move_less_movement(t_stack **a, t_stack **b);
+void	free_list(t_stack *a);
 #endif
