@@ -6,13 +6,13 @@
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 19:32:25 by pbengoec          #+#    #+#             */
-/*   Updated: 2023/01/12 14:56:00 by pbengoec         ###   ########.fr       */
+/*   Updated: 2023/01/13 12:54:34 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef  PUSH_SWAP_H
 # define PUSH_SWAP_H
-# include "libft/libft.h"
+# include "../libft/libft.h"
 # include <stdio.h>
 # include <stdarg.h>
 

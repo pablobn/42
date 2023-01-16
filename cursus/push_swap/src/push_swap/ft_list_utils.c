@@ -6,11 +6,11 @@
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 14:30:15 by pbengoec          #+#    #+#             */
-/*   Updated: 2023/01/12 14:32:47 by pbengoec         ###   ########.fr       */
+/*   Updated: 2023/01/13 10:22:36 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../../includes/push_swap.h"
 
 void	ft_swap(t_stack **a, int num)
 {

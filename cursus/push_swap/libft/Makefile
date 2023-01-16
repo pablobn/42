@@ -6,7 +6,7 @@
 #    By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/21 15:45:05 by pbengoec          #+#    #+#              #
-#    Updated: 2023/01/12 16:30:52 by pbengoec         ###   ########.fr        #
+#    Updated: 2023/01/13 15:38:36 by pbengoec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,19 +22,23 @@ SRCS		= ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c ft_strl
 
 OBJS		= ${SRCS:.c=.o}
 
+RED = \033[0;31m
+GREEN = \033[0;32m
+NONE = \033[0m
+
 ${NAME}	:
 			@${CC} -c ${CFLAGS} ${SRCS} 
 			@ar crs ${NAME} ${OBJS}
-			@echo "Compiled libft"
-
+			@echo "\t[ $(GREEN)✔$(NONE) ] libft/libft.a library"
 all		:	${NAME}
 
 clean	:
-		@${RM} ${OBJS} 
+		@${RM} ${OBJS}
+		@echo "\t[ $(RED)✗$(NONE) ] libft/$(OBJ_DIR) directory"
 	
 fclean	:	clean
 		@${RM} -f ${NAME}
-		@echo "Cleaned libft"
+		@echo "\t[ $(RED)✗$(NONE) ] libft/$(NAME) library"
 
 re		:	fclean all
 
