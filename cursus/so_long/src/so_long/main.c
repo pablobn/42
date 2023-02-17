@@ -6,7 +6,7 @@
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 19:11:58 by pbengoec          #+#    #+#             */
-/*   Updated: 2023/02/02 14:37:49 by pbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/17 18:30:28 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	leaks(void)
 
 int	main(int argc, char **argv)
 {
-	// atexit(leaks);
+	atexit(leaks);
 	if (argc == 2)
 	{
 		ft_start(argv[1]);

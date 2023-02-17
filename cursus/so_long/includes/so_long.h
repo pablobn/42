@@ -6,7 +6,7 @@
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 19:15:05 by pbengoec          #+#    #+#             */
-/*   Updated: 2023/02/15 13:39:47 by pbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/17 18:26:21 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ typedef struct game
 	int			map_height;
 	int			is_black;
 	int			first_color;
+	int			total_collec;
 }t_game;
 
 void	add_last(t_map **map, char *dato);
@@ -72,4 +73,5 @@ void	game(t_map **map);
 char	*get_next_line(int fd);
 void	create_map(t_map *map, t_game *game);
 void	set_img_bakground(char c, int x, int y, t_game *game);
+void	movements(t_game game, int dir);
 #endif

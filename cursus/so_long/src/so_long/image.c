@@ -6,7 +6,7 @@
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 16:03:25 by pbengoec          #+#    #+#             */
-/*   Updated: 2023/02/15 13:39:38 by pbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/17 18:01:42 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,10 @@ static void	set_img(char c, int x, int y, t_game *game)
 	else if (c == 'E')
 		mlx_image_to_window(game[0].mlx, game[0].images.exit, x, y);
 	else if (c == 'C')
+	{
 		mlx_image_to_window(game[0].mlx, game[0].images.collec, x, y);
+		game[0].total_collec += 1;
+	}
 }
 
 void	create_img(t_map *map, t_game *game)
