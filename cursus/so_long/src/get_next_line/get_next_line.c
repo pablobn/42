@@ -6,7 +6,7 @@
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 20:15:10 by pbengoec          #+#    #+#             */
-/*   Updated: 2023/01/31 20:10:54 by pbengoec         ###   ########.fr       */
+/*   Updated: 2023/01/31 19:55:26 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,14 @@ static char	*ft_get_line(int fd, char *str)
 	buf[size] = '\0';
 	while (size > 0 && !ft_strchr(buf, '\n'))
 	{
-		str = ft_strjoin(str, buf);
+		str = ft_strjoin_gnl(str, buf);
 		size = read(fd, buf, BUFFER_SIZE);
 		buf[size] = '\0';
 	}
 	if (size == -1)
 		return (free(buf), free(str), NULL);
 	if (size > 0)
-		str = ft_strjoin(str, buf);
+		str = ft_strjoin_gnl(str, buf);
 	return (free(buf), str);
 }
 
@@ -100,13 +100,4 @@ char	*get_next_line(int fd)
 	line = ft_cut_line(str);
 	str = ft_new_str(str);
 	return (line);
-}
-
-int	main()
-{
-	int	fd;
-
-	fd = open("hola.txt", O_RDONLY);
-	printf("%d\n",fd);
-	printf("%s\n", get_next_line(fd));
 }
