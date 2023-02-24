@@ -6,7 +6,7 @@
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 12:27:51 by pbengoec          #+#    #+#             */
-/*   Updated: 2023/02/14 16:10:08 by pbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/23 20:30:15 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,40 @@ static t_map	*ft_get_map(int fd)
 	return (map);
 }
 
-void	ft_start(char *str)
+t_game	init_game(int fd)
+{
+	t_game	game;
+
+	game.map_height = 0;
+	game.map_width = 0;
+	game.moves = 0;
+	game.c = 0;
+	game.p = 0;
+	game.e = 0;
+	game.mlx = NULL;
+	game.is_black = 1;
+	game.map = ft_get_map(fd);
+	init_map(&game, game.map);
+	game.mlx = mlx_init(game.map_width, game.map_height, "MLX42", true);
+	if (!game.mlx)
+		game.mlx = NULL;
+	init_images(&game);
+	return (game);
+}
+
+int	ft_start(char *str)
 {
 	int		fd;
-	t_map	*map;
+	t_game	game;
 
 	fd = open(str, O_RDONLY);
-	printf("%s\n", str);
 	if (fd < 0)
-		return ;
-	map = ft_get_map(fd);
-	game(&map);
-	free_list(map);
+		return (1);
+	game = init_game(fd);
+	if (game.mlx == NULL)
+		return (1);
+	if (ft_game(game))
+		return (1);
 	close(fd);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 13:46:38 by pbengoec          #+#    #+#             */
-/*   Updated: 2023/02/14 16:09:32 by pbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/23 19:37:16 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,18 +31,6 @@ void	add_last(t_map **map, char *dato)
 	}
 }
 
-void	show_map(t_map **map)
-{
-	t_map	*new;
-
-	new = map[0];
-	while (new)
-	{
-		printf("%s", new->line);
-		new = new->next;
-	}
-}
-
 void	free_list(t_map *map)
 {
 	t_map	*tmp;
@@ -51,6 +39,7 @@ void	free_list(t_map *map)
 	{
 		tmp = map;
 		map = map->next;
+		free(tmp->line);
 		free(tmp);
 	}
 }

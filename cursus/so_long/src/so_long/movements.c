@@ -6,7 +6,7 @@
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 18:25:43 by pbengoec          #+#    #+#             */
-/*   Updated: 2023/02/17 18:26:09 by pbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/23 19:36:05 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,25 +83,31 @@ static void	end_game(t_game game, int x, int y)
 	if (game.images.exit->instances[0].x == x
 		&& game.images.exit->instances[0].y == y)
 	{
-		while (i <= game.total_collec)
+		while (i < game.total_collec)
 		{
 			if (game.images.collec->instances[i].enabled)
 				collec = 0;
 			i++;
 		}
 		if (collec)
-			mlx_close_window(game.mlx);
+			ft_finish(&game);
 	}
 }
 
-void	movements(t_game game, int dir)
+void	movements(t_game *game, int dir)
 {
-	int	x;
-	int	y;
+	int		x;
+	int		y;
+	char	*num;
 
-	x = move_position(dir, game.images.position->instances[0].x, 1);
-	y = move_position(dir, game.images.position->instances[0].y, 2);
-	forbidden_move(game, x, y);
-	collection_move(game, x, y);
-	end_game(game, x, y);
+	x = move_position(dir, game[0].images.position->instances[0].x, 1);
+	y = move_position(dir, game[0].images.position->instances[0].y, 2);
+	forbidden_move(game[0], x, y);
+	collection_move(game[0], x, y);
+	game[0].moves += 1;
+	num = ft_itoa(game[0].moves);
+	ft_putstr_fd(num, 1);
+	ft_putstr_fd("\n", 1);
+	free(num);
+	end_game(game[0], x, y);
 }

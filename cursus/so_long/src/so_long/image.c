@@ -6,7 +6,7 @@
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 16:03:25 by pbengoec          #+#    #+#             */
-/*   Updated: 2023/02/17 18:01:42 by pbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/23 18:17:34 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,15 @@ static void	set_img(char c, int x, int y, t_game *game)
 	}
 }
 
-void	create_img(t_map *map, t_game *game)
+void	create_img(t_game *game)
 {
 	char		*str;
+	t_map		*map;
 	int			x;
 	int			y;
 
 	y = 0;
+	map = game[0].map;
 	while (map)
 	{
 		str = map->line;

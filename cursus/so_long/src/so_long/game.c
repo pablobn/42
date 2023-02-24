@@ -6,7 +6,7 @@
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 14:40:33 by pbengoec          #+#    #+#             */
-/*   Updated: 2023/02/17 18:27:27 by pbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/23 20:28:12 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,45 +18,29 @@ void	my_keyhook(mlx_key_data_t keydata, void	*param)
 
 	game = param;
 	if (keydata.key == MLX_KEY_A && keydata.action == MLX_PRESS)
-		movements(game[0], 1);
+		movements(game, 1);
 	if (keydata.key == MLX_KEY_S && keydata.action == MLX_PRESS)
-		movements(game[0], 2);
+		movements(game, 2);
 	if (keydata.key == MLX_KEY_D && keydata.action == MLX_PRESS)
-		movements(game[0], 3);
+		movements(game, 3);
 	if (keydata.key == MLX_KEY_W && keydata.action == MLX_PRESS)
-		movements(game[0], 4);
+		movements(game, 4);
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
-		mlx_close_window(game[0].mlx);
+		ft_finish(game);
 }
 
-t_game	init_game(t_map *map)
+int	ft_game(t_game game)
 {
-	t_game		game;
-
-	game.map_height = 0;
-	game.map_width = 0;
-	game.mlx = NULL;
-	game.is_black = 1;
-	init_map(&game, map);
-	game.mlx = mlx_init(game.map_width, game.map_height, "MLX42", true);
-	if (!game.mlx)
-		game.mlx = NULL;
-	init_images(&game);
-	return (game);
-}
-
-void	game(t_map **map)
-{
-	t_game		game;
-
-	game = init_game(map[0]);
-	if (game.mlx == NULL)
-		return ;
-	create_map(map[0], &game);
-	create_img(map[0], &game);
+	if (ft_check_errors(&game, game.map))
+	{
+		ft_free_game(&game);
+		return (1);
+	}
+	create_map(&game, game.map);
+	create_img(&game);
 	mlx_set_setting(MLX_STRETCH_IMAGE, 1);
 	mlx_key_hook(game.mlx, &my_keyhook, &game);
 	mlx_loop(game.mlx);
 	mlx_terminate(game.mlx);
-	return ;
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 19:43:41 by pbengoec          #+#    #+#             */
-/*   Updated: 2023/01/20 16:59:55 by pbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/20 16:29:36 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,12 +91,18 @@ int	valid_digit(char *str, t_stack **stack)
 	return (free_split(split), 1);
 }
 
+void	leaks(void)
+{
+	system("leaks -q push_swap");
+}
+
 int	main(int argc, char **argv)
 {
 	t_stack	*a;
 	int		i;
 	int		valid;
 
+	atexit(leaks);
 	valid = 1;
 	a = NULL;
 	if (argc > 1)

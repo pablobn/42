@@ -6,13 +6,13 @@
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 16:05:04 by pbengoec          #+#    #+#             */
-/*   Updated: 2023/02/15 13:39:25 by pbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/23 19:47:52 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static int	len_map(t_map *map, int size)
+int	len_map(t_map *map, int size)
 {
 	int	i;
 
@@ -25,7 +25,7 @@ static int	len_map(t_map *map, int size)
 	return (i);
 }
 
-static int	len_map_line(t_map *map, int size)
+int	len_map_line(t_map *map, int size)
 {
 	int		i;
 	char	*line;
@@ -52,7 +52,7 @@ static void	check_if_black(t_game *game)
 	}
 }
 
-void	create_map(t_map *map, t_game *game)
+void	create_map(t_game *game, t_map *map)
 {
 	char		*str;
 	int			x;
