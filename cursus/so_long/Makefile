@@ -6,7 +6,7 @@
 #    By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/16 15:17:39 by pbengoec          #+#    #+#              #
-#    Updated: 2023/02/23 19:45:43 by pbengoec         ###   ########.fr        #
+#    Updated: 2023/03/01 12:27:22 by pbengoec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,9 @@ SRCSFD = src/
 SOLONGPFD = so_long/
 GNLPFD = get_next_line/
 
-SOLONG_SRC = main.c start.c list_utils.c game.c map.c image.c movements.c finish.c check_errors.c
+SOLONG_SRC = main.c start.c list_utils.c game.c map.c \
+			image.c movements.c finish.c check_errors.c\
+			flood_fill.c ft_check_figures.c
 GNLPFD_SRC = get_next_line.c get_next_line_utils.c
 
 OBJSFD = objs/

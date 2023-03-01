@@ -6,7 +6,7 @@
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 17:12:43 by pbengoec          #+#    #+#             */
-/*   Updated: 2023/02/23 19:51:16 by pbengoec         ###   ########.fr       */
+/*   Updated: 2023/03/01 12:33:28 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	ft_free_game(t_game *game)
 
 void	ft_finish(t_game *game)
 {
+	game[0].finished = 1;
 	ft_free_game(game);
 	mlx_close_window(game[0].mlx);
 }

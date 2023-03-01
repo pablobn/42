@@ -6,7 +6,7 @@
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 12:27:51 by pbengoec          #+#    #+#             */
-/*   Updated: 2023/02/23 20:30:15 by pbengoec         ###   ########.fr       */
+/*   Updated: 2023/03/01 12:22:39 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ t_game	init_game(int fd)
 	game.moves = 0;
 	game.c = 0;
 	game.p = 0;
+	game.finished = 0;
 	game.e = 0;
 	game.mlx = NULL;
 	game.is_black = 1;

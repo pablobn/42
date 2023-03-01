@@ -6,7 +6,7 @@
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 19:39:49 by pbengoec          #+#    #+#             */
-/*   Updated: 2023/02/24 21:20:00 by pbengoec         ###   ########.fr       */
+/*   Updated: 2023/03/01 12:26:39 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,7 @@ static int	ft_wall_rodated(t_map *map)
 		if (*line != '1')
 			return (1);
 		while (*line)
-		{
 			line++;
-		}
 		line--;
 		line--;
 		if (*line != '1')
@@ -105,40 +103,19 @@ static int	ft_check_numbers(t_map *map)
 	return (0);
 }
 
-void	ft_f_fill(t_map *map, int size, int col)
-{
-	if (map->line == NULL || col < 0 || col > size)
-		return ;
-	if (map->line[col] == 'F')
-		return ;
-	map->line[col] = 'F';
-	while (map)
-	{
-		printf("%s\n", map->line);
-		map = map->next;
-	}
-	ft_f_fill(map->next, size, col);
-	ft_f_fill(map->next, size, col + 1);
-	ft_f_fill(map->next, size, col - 1);
-}
-
-int	ft_check_flood_fill(t_map *map)
-{
-	ft_f_fill(map, len_map_line(map, 1), 0);
-	// ft_check_map(map);
-	return (0);
-}
-
 int	ft_check_errors(t_game *game, t_map *map)
 {
 	int	error;
 
 	error = 0;
-	if (ft_wall_rodated(map) || ft_map_rectangle(map) || ft_check_numbers(map))
+	if (ft_wall_rodated(map) || ft_map_rectangle(map) || ft_check_numbers(map)
+		|| ft_check_flood_fill(map))
 	{
 		ft_putstr_fd("Error\n", 2);
 		error = 1;
 	}
+	if (ft_check_flood_fill(map))
+		ft_putstr_fd("El mapa no tiene un camino correcto\n", 2);
 	if (ft_check_numbers(map))
 		ft_putstr_fd("El mapa tiene carácteres irreconocibles\n", 2);
 	if (ft_wall_rodated(map))
@@ -147,13 +124,8 @@ int	ft_check_errors(t_game *game, t_map *map)
 		ft_putstr_fd("El mapa no es rectangular\n", 2);
 	if (ft_check_figures(game, map))
 	{
-		ft_putstr_fd("Error\n", 2);
-		if (game[0].e > 1 || game[0].p > 1)
-			ft_putstr_fd("Salida o posición estan duplicados\n", 2);
-		if (game[0].e == 0 || game[0].p == 0 || game[0].c == 0)
-			ft_putstr_fd("Faltan carácteres obligatorios\n", 2);
+		ft_send_msg(game);
 		return (1);
 	}
-	// ft_check_flood_fill(map);
 	return (error);
 }

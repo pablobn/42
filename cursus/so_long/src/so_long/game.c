@@ -6,7 +6,7 @@
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 14:40:33 by pbengoec          #+#    #+#             */
-/*   Updated: 2023/02/23 20:28:12 by pbengoec         ###   ########.fr       */
+/*   Updated: 2023/03/01 12:34:39 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int	ft_game(t_game game)
 	mlx_set_setting(MLX_STRETCH_IMAGE, 1);
 	mlx_key_hook(game.mlx, &my_keyhook, &game);
 	mlx_loop(game.mlx);
-	mlx_terminate(game.mlx);
+	if (game.finished == 0)
+		ft_finish(&game);
 	return (0);
 }
