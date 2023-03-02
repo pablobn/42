@@ -6,7 +6,7 @@
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 12:27:51 by pbengoec          #+#    #+#             */
-/*   Updated: 2023/03/01 12:22:39 by pbengoec         ###   ########.fr       */
+/*   Updated: 2023/03/01 18:05:51 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,15 @@ int	ft_start(char *str)
 
 	fd = open(str, O_RDONLY);
 	if (fd < 0)
-		return (1);
+	{
+		ft_putstr_fd("Error\nNo se encuentra el archivo\n", 2);
+		return (close(fd), 1);
+	}
 	game = init_game(fd);
 	if (game.mlx == NULL)
-		return (1);
+		return (close(fd), 1);
 	if (ft_game(game))
-		return (1);
+		return (close(fd), 1);
 	close(fd);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 11:55:27 by pbengoec          #+#    #+#             */
-/*   Updated: 2023/03/01 12:12:46 by pbengoec         ###   ########.fr       */
+/*   Updated: 2023/03/02 17:42:30 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,18 +29,17 @@ static void	ft_init_array(t_map *map, char **arr)
 			j++;
 			line++;
 		}
-		arr[i][j] = '\0';
 		map = map->next;
 		i++;
 	}
 }
 
-static void	ft_free_array(char **arr)
+static void	ft_free_array(char **arr, int size)
 {
 	int	i;
 
 	i = 0;
-	while (arr[i])
+	while (i < size)
 	{
 		free(arr[i]);
 		i++;
@@ -67,7 +66,8 @@ static int	ft_check_map(char **tab)
 	int	j;
 
 	i = 0;
-	while (tab[i])
+	j = 0;
+	while (tab[i][j])
 	{
 		j = 0;
 		while (tab[i][j])
@@ -92,17 +92,19 @@ int	ft_check_flood_fill(t_map *map)
 	size.target = '1';
 	arr = malloc(sizeof(char **) * size.y);
 	if (!arr)
-		return (0);
-	arr[size.y] = NULL;
+		return (1);
 	i = 0;
-	while (arr[i])
+	while (i < size.y)
 	{
-		arr[i] = malloc(sizeof(char *) * (size.x - 1));
+		arr[i] = malloc(sizeof(char *) * size.x);
+		if (!arr[i])
+			return (1);
+		arr[i][size.x] = '\0';
 		i++;
 	}
 	ft_init_array(map, arr);
 	ft_f_fill(arr, size, 1, 1);
 	if (ft_check_map(arr))
-		return (ft_free_array(arr), 1);
-	return (ft_free_array(arr), 0);
+		return (ft_free_array(arr, size.y), 1);
+	return (ft_free_array(arr, size.y), 0);
 }
