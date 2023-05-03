@@ -6,22 +6,16 @@
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 19:11:58 by pbengoec          #+#    #+#             */
-/*   Updated: 2023/03/01 18:00:55 by pbengoec         ###   ########.fr       */
+/*   Updated: 2023/03/06 12:26:07 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	leaks(void)
-{
-	system("leaks -q so_long");
-}
-
 int	main(int argc, char **argv)
 {
 	int	i;
 
-	atexit(leaks);
 	i = 0;
 	if (argc == 2)
 	{
@@ -34,6 +28,12 @@ int	main(int argc, char **argv)
 		}
 		if (ft_start(argv[1]))
 			return (255);
+	}
+	else
+	{
+		ft_putstr_fd("Error\n", 2);
+		ft_putstr_fd("Los parámetros no están bien colocados\n", 2);
+		return (255);
 	}
 	return (0);
 }

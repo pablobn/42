@@ -6,13 +6,13 @@
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 16:03:25 by pbengoec          #+#    #+#             */
-/*   Updated: 2023/02/23 18:17:34 by pbengoec         ###   ########.fr       */
+/*   Updated: 2023/03/03 11:51:40 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	set_img_bakground(char c, int x, int y, t_game *game)
+void	ft_set_img_bakground(char c, int x, int y, t_game *game)
 {
 	if (game[0].is_black)
 		game[0].is_black = 0;
@@ -32,11 +32,9 @@ void	set_img_bakground(char c, int x, int y, t_game *game)
 	}
 }
 
-static void	set_img(char c, int x, int y, t_game *game)
+static void	ft_set_img(char c, int x, int y, t_game *game)
 {
-	if (c == 'P')
-		mlx_image_to_window(game[0].mlx, game[0].images.position, x, y);
-	else if (c == 'E')
+	if (c == 'E')
 		mlx_image_to_window(game[0].mlx, game[0].images.exit, x, y);
 	else if (c == 'C')
 	{
@@ -45,7 +43,7 @@ static void	set_img(char c, int x, int y, t_game *game)
 	}
 }
 
-void	create_img(t_game *game)
+void	ft_create_img(t_game *game)
 {
 	char		*str;
 	t_map		*map;
@@ -62,7 +60,7 @@ void	create_img(t_game *game)
 		{
 			if (*str != '\n')
 			{
-				set_img(*str, x, y, game);
+				ft_set_img(*str, x, y, game);
 				x += 64;
 			}
 			str++;
@@ -70,9 +68,10 @@ void	create_img(t_game *game)
 		y += 64;
 		map = map->next;
 	}
+	ft_create_pos(game);
 }
 
-void	init_images(t_game *game)
+void	ft_init_images(t_game *game)
 {
 	game[0].textures.wall = mlx_load_png("./images/wall.png");
 	game[0].textures.tower = mlx_load_png("./images/tower.png");

@@ -6,13 +6,13 @@
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 13:46:38 by pbengoec          #+#    #+#             */
-/*   Updated: 2023/02/23 19:37:16 by pbengoec         ###   ########.fr       */
+/*   Updated: 2023/03/03 11:48:53 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	add_last(t_map **map, char *dato)
+void	ft_add_last(t_map **map, char *dato)
 {
 	t_map	*new;
 	t_map	*last_node;
@@ -31,7 +31,7 @@ void	add_last(t_map **map, char *dato)
 	}
 }
 
-void	free_list(t_map *map)
+void	ft_free_list(t_map *map)
 {
 	t_map	*tmp;
 

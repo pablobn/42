@@ -6,13 +6,13 @@
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 18:25:43 by pbengoec          #+#    #+#             */
-/*   Updated: 2023/03/01 12:34:21 by pbengoec         ###   ########.fr       */
+/*   Updated: 2023/03/06 12:22:24 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static int	move_position(int dir, int x, int num)
+static int	ft_move_position(int dir, int x, int num)
 {
 	if (num == 1)
 	{
@@ -31,28 +31,34 @@ static int	move_position(int dir, int x, int num)
 	return (x);
 }
 
-static void	forbidden_move(t_game game, int x, int y)
+static void	ft_forbidden_move(t_game *game, int x, int y)
 {
-	int	i;
-	int	pasar;
+	int		i;
+	int		pasar;
+	char	*num;
 
 	pasar = 1;
 	i = 0;
-	while (game.images.wall->instances[i].enabled && pasar)
+	while (game[0].images.wall->instances[i].enabled && pasar)
 	{
-		if (game.images.wall->instances[i].x == x
-			&& game.images.wall->instances[i].y == y)
+		if (game[0].images.wall->instances[i].x == x
+			&& game[0].images.wall->instances[i].y == y)
 			pasar = 0;
 		i++;
 	}
 	if (pasar)
 	{
-		game.images.position->instances[0].x = x;
-		game.images.position->instances[0].y = y;
+		game[0].moves += 1;
+		num = ft_itoa(game[0].moves);
+		ft_putstr_fd(num, 1);
+		ft_putstr_fd("\n", 1);
+		free(num);
+		game[0].images.position->instances[0].x = x;
+		game[0].images.position->instances[0].y = y;
 	}
 }
 
-static void	collection_move(t_game game, int x, int y)
+static void	ft_collection_move(t_game game, int x, int y)
 {
 	int	i;
 	int	remove;
@@ -73,7 +79,7 @@ static void	collection_move(t_game game, int x, int y)
 	}
 }
 
-static void	end_game(t_game *game, int x, int y)
+static void	ft_end_game(t_game *game, int x, int y)
 {
 	int	i;
 	int	collec;
@@ -94,20 +100,14 @@ static void	end_game(t_game *game, int x, int y)
 	}
 }
 
-void	movements(t_game *game, int dir)
+void	ft_movements(t_game *game, int dir)
 {
 	int		x;
 	int		y;
-	char	*num;
 
-	x = move_position(dir, game[0].images.position->instances[0].x, 1);
-	y = move_position(dir, game[0].images.position->instances[0].y, 2);
-	forbidden_move(game[0], x, y);
-	collection_move(game[0], x, y);
-	game[0].moves += 1;
-	num = ft_itoa(game[0].moves);
-	ft_putstr_fd(num, 1);
-	ft_putstr_fd("\n", 1);
-	free(num);
-	end_game(game, x, y);
+	x = ft_move_position(dir, game[0].images.position->instances[0].x, 1);
+	y = ft_move_position(dir, game[0].images.position->instances[0].y, 2);
+	ft_forbidden_move(game, x, y);
+	ft_collection_move(game[0], x, y);
+	ft_end_game(game, x, y);
 }

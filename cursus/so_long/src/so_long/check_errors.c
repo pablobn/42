@@ -6,7 +6,7 @@
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 19:39:49 by pbengoec          #+#    #+#             */
-/*   Updated: 2023/03/02 17:38:42 by pbengoec         ###   ########.fr       */
+/*   Updated: 2023/03/03 11:47:32 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ static int	ft_map_rectangle(t_map *map)
 	int		num;
 	char	*line;
 
-	num = len_map_line(map, 1);
-	if (len_map(map, 1) == num)
+	num = ft_len_map_line(map, 1);
+	if (ft_len_map(map, 1) == num)
 		return (1);
 	while (map)
 	{

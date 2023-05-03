@@ -6,13 +6,13 @@
 #    By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/16 15:17:39 by pbengoec          #+#    #+#              #
-#    Updated: 2023/03/01 12:27:22 by pbengoec         ###   ########.fr        #
+#    Updated: 2023/03/14 20:01:11 by pbengoec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 
-CFLAGS = -Werror -Wall -Wextra
+CFLAGS = -Werror -Wall -Wextra -g3
 
 SRCSFD = src/
 
@@ -21,7 +21,7 @@ GNLPFD = get_next_line/
 
 SOLONG_SRC = main.c start.c list_utils.c game.c map.c \
 			image.c movements.c finish.c check_errors.c\
-			flood_fill.c ft_check_figures.c
+			flood_fill.c ft_check_figures.c create_position.c
 GNLPFD_SRC = get_next_line.c get_next_line_utils.c
 
 OBJSFD = objs/
@@ -35,7 +35,7 @@ HDRS = $(addprefix $(HDRSFD), $(HDR))
 HDR_INC = -I./includes
 
 LIBFT = library/libft/libft.a
-MLX = library/MLX42/libmlx42.a
+MLX = ./library/MLX42/libmlx42.a
 MLX_INC = -L "/Users/$$USER/.brew/opt/glfw/lib/" -I ./MLX42/include
 
 RED = \033[0;31m
@@ -43,7 +43,7 @@ GREEN = \033[0;32m
 NONE = \033[0m
 
 
-all: check_libft project $(HDRS) ${NAME}
+all: check_libft check_minilibx project $(HDRS) ${NAME}
 		@echo "Project ready"
 
 check_minilibx:
@@ -84,11 +84,13 @@ clean:
 		@/bin/rm -rf $(OBJSFD)
 		@echo "\t[ $(RED)✗$(NONE) ] $(OBJSFD) directory"
 		@${MAKE} -s -C library/libft/ clean
+		@${MAKE} -s -C library/MLX42/ clean
 
 fclean:	clean
 		@/bin/rm -f $(NAME)
 		@echo "\t[ $(RED)✗$(NONE) ] $(NAME) executable"
-		@${MAKE} -s -C library/libft/ clean
+		@${MAKE} -s -C library/libft/ fclean
+		@${MAKE} -s -C library/MLX42/ fclean
 	
 re:	fclean all
 

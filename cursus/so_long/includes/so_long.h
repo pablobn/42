@@ -6,7 +6,7 @@
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 19:15:05 by pbengoec          #+#    #+#             */
-/*   Updated: 2023/03/01 12:26:59 by pbengoec         ###   ########.fr       */
+/*   Updated: 2023/03/03 11:49:17 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,23 +74,24 @@ typedef struct point
 	char	target;
 }t_point;
 
-void	add_last(t_map **map, char *dato);
-void	create_img(t_game *game);
-void	init_images(t_game *game);
-void	init_map(t_game	*game, t_map *map);
-void	free_list(t_map *map);
+void	ft_add_last(t_map **map, char *dato);
+void	ft_create_img(t_game *game);
+void	ft_init_images(t_game *game);
+void	ft_init_map(t_game	*game, t_map *map);
+void	ft_free_list(t_map *map);
 int		ft_start(char *str);
 int		ft_game(t_game game);
 char	*get_next_line(int fd);
-void	create_map(t_game *game, t_map *map);
-void	set_img_bakground(char c, int x, int y, t_game *game);
-void	movements(t_game *game, int dir);
+void	ft_create_map(t_game *game, t_map *map);
+void	ft_set_img_bakground(char c, int x, int y, t_game *game);
+void	ft_movements(t_game *game, int dir);
 void	ft_finish(t_game *game);
 int		ft_check_errors(t_game *game, t_map *map);
-int		len_map_line(t_map *map, int size);
-int		len_map(t_map *map, int size);
+int		ft_len_map_line(t_map *map, int size);
+int		ft_len_map(t_map *map, int size);
 void	ft_free_game(t_game *game);
 int		ft_check_flood_fill(t_map *map);
 void	ft_send_msg(t_game *game);
+void	ft_create_pos(t_game *game);
 
 #endif

@@ -6,13 +6,13 @@
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 16:05:04 by pbengoec          #+#    #+#             */
-/*   Updated: 2023/02/23 19:47:52 by pbengoec         ###   ########.fr       */
+/*   Updated: 2023/03/03 11:45:51 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	len_map(t_map *map, int size)
+int	ft_len_map(t_map *map, int size)
 {
 	int	i;
 
@@ -25,7 +25,7 @@ int	len_map(t_map *map, int size)
 	return (i);
 }
 
-int	len_map_line(t_map *map, int size)
+int	ft_len_map_line(t_map *map, int size)
 {
 	int		i;
 	char	*line;
@@ -41,7 +41,7 @@ int	len_map_line(t_map *map, int size)
 	return (i);
 }
 
-static void	check_if_black(t_game *game)
+static void	ft_check_if_black(t_game *game)
 {
 	if (game[0].first_color == game[0].is_black)
 	{
@@ -52,7 +52,7 @@ static void	check_if_black(t_game *game)
 	}
 }
 
-void	create_map(t_game *game, t_map *map)
+void	ft_create_map(t_game *game, t_map *map)
 {
 	char		*str;
 	int			x;
@@ -68,19 +68,19 @@ void	create_map(t_game *game, t_map *map)
 		{
 			if (*str != '\n')
 			{
-				set_img_bakground(*str, x, y, game);
+				ft_set_img_bakground(*str, x, y, game);
 				x += 64;
 			}
 			str++;
 		}
-		check_if_black(game);
+		ft_check_if_black(game);
 		y += 64;
 		map = map->next;
 	}
 }
 
-void	init_map(t_game	*game, t_map *map)
+void	ft_init_map(t_game	*game, t_map *map)
 {
-	game[0].map_height = len_map(map, 64);
-	game[0].map_width = len_map_line(map, 64);
+	game[0].map_height = ft_len_map(map, 64);
+	game[0].map_width = ft_len_map_line(map, 64);
 }
