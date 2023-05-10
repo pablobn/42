@@ -6,7 +6,7 @@
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 19:15:59 by pbengoec          #+#    #+#             */
-/*   Updated: 2023/04/25 20:50:13 by pbengoec         ###   ########.fr       */
+/*   Updated: 2023/05/04 20:59:32 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,19 @@
 
 typedef struct pipex
 {
-	char	**argv;
+	pid_t	pid1;
+	pid_t	pid2;
+	char	**cmd_argv;
 	int		infile;
 	int		outfile;
 	char	*path;
-	int		pid1;
-	int		pid2;
 	char	*cmd_path;
 	int		tube[2];
-} t_pipex;
-
-int	main(int argc, char **argv, char **envp);
+}	t_pipex;
+int		main(int argc, char **argv, char **envp);
+void	ft_first_process(char **argv, char **envp, t_pipex pipex);
+void	ft_second_process(char **argv, char **envp, t_pipex pipex);
+void	ft_free_child(t_pipex *pipex);
+void	ft_free_parent(t_pipex *pipex);
+void	msg_error(char *err);
 #endif

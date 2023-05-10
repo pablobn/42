@@ -6,7 +6,7 @@
 #    By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/13 17:10:02 by pbengoec          #+#    #+#              #
-#    Updated: 2023/04/25 20:24:29 by pbengoec         ###   ########.fr        #
+#    Updated: 2023/05/04 20:59:06 by pbengoec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,13 +14,15 @@ NAME = pipex
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -g -Wall -Wextra -Werror
 
 PIPEXFD = pipex/
 
 SRCSFD = src/
 PIPEX_SRC = pipex.c \
-				child.c
+				child.c \
+				free.c \
+				message.c
 
 OBJSFD = objs/
 PIPEX_OBJS = $(addprefix $(OBJSFD)$(PIPEXFD), $(PIPEX_SRC:.c=.o))
@@ -52,7 +54,7 @@ $(OBJSFD)$(PIPEXFD): $(OBJSFD)
 		@echo "\t[ $(GREEN)✔$(NONE) ] $@ directory"
 
 ${NAME}: check_libft ${OBJSFD}$(PIPEXFD) ${PIPEX_OBJS} $(LIBFT) $(HDRS)
-	${CC} ${CFLAGS} $(LIB_BINARY) ${PIPEX_OBJS} -o $@
+	@gcc ${CFLAGS} $(LIB_BINARY) ${PIPEX_OBJS} -o $@
 	@echo "\t[ $(GREEN)✔$(NONE) ] $@ executable"
 
 $(OBJSFD)$(PIPEXFD)%.o: $(SRCSFD)$(PIPEXFD)%.c $(HDRS) $(LIBFT)
