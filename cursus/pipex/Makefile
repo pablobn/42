@@ -6,7 +6,7 @@
 #    By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/13 17:10:02 by pbengoec          #+#    #+#              #
-#    Updated: 2023/05/04 20:59:06 by pbengoec         ###   ########.fr        #
+#    Updated: 2023/05/23 15:42:30 by pbengoec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = pipex
 
 CC = gcc
 
-CFLAGS = -g -Wall -Wextra -Werror
+CFLAGS = -g3 -Wall -Wextra -Werror
 
 PIPEXFD = pipex/
 
@@ -32,7 +32,7 @@ HDR = pipex.h
 HDRS = $(addprefix $(HDRSFD), $(HDR))
 
 HDR_INC = -I./includes
-LIBFT_HRD = -I./library/libft/includes/
+LIBFT_HDR = -I./library/libft/includes/
 LIB_BINARY = -L./library/libft -lft
 LIBFT = library/libft/libft.a
 
@@ -40,9 +40,9 @@ RED = \033[0;31m
 GREEN = \033[0;32m
 NONE = \033[0m
 
-all: ${HDRS} ${NAME}
+all: ${NAME}
 
-check_libft:
+${LIBFT}:
 	@make -C library/libft
 
 $(OBJSFD):
@@ -53,12 +53,13 @@ $(OBJSFD)$(PIPEXFD): $(OBJSFD)
 		@mkdir $@
 		@echo "\t[ $(GREEN)✔$(NONE) ] $@ directory"
 
-${NAME}: check_libft ${OBJSFD}$(PIPEXFD) ${PIPEX_OBJS} $(LIBFT) $(HDRS)
+${NAME}: ${LIBFT} ${OBJSFD}$(PIPEXFD) ${PIPEX_OBJS} $(LIBFT) $(HDRS)
 	@gcc ${CFLAGS} $(LIB_BINARY) ${PIPEX_OBJS} -o $@
 	@echo "\t[ $(GREEN)✔$(NONE) ] $@ executable"
 
 $(OBJSFD)$(PIPEXFD)%.o: $(SRCSFD)$(PIPEXFD)%.c $(HDRS) $(LIBFT)
 	@gcc $(CFLAGS) $(HDR_INC) $(LIBFT_HDR) -o $@ -c $<
+
 
 clean:
 	@/bin/rm -rf $(OBJSFD)

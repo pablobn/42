@@ -6,7 +6,7 @@
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 18:48:16 by pbengoec          #+#    #+#             */
-/*   Updated: 2023/05/04 21:09:04 by pbengoec         ###   ########.fr       */
+/*   Updated: 2023/05/23 16:34:46 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,10 @@ void	ft_first_process(char **argv, char **envp, t_pipex pipex)
 	pipex.cmd_path = ft_get_cmd(pipex, ft_strjoin("/", pipex.cmd_argv[0]));
 	if (!pipex.cmd_path)
 	{
+		ft_msg_child_error("'");
+		ft_msg_child_error(argv[2]);
+		ft_msg_child_error("' No existe tal comando\n");
 		ft_free_child(&pipex);
-		ft_putstr_fd("No existe tal comando\n", 2);
 		exit(1);
 	}
 	execve(pipex.cmd_path, pipex.cmd_argv, envp);
@@ -56,8 +58,10 @@ void	ft_second_process(char **argv, char **envp, t_pipex pipex)
 	pipex.cmd_path = ft_get_cmd(pipex, ft_strjoin("/", pipex.cmd_argv[0]));
 	if (!pipex.cmd_path)
 	{
+		ft_msg_child_error("'");
+		ft_msg_child_error(argv[3]);
+		ft_msg_child_error("' No existe tal comando\n");
 		ft_free_child(&pipex);
-		ft_putstr_fd("No existe tal comando\n", 2);
 		exit(1);
 	}
 	execve(pipex.cmd_path, pipex.cmd_argv, envp);

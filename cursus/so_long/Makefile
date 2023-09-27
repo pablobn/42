@@ -6,7 +6,7 @@
 #    By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/16 15:17:39 by pbengoec          #+#    #+#              #
-#    Updated: 2023/03/14 20:01:11 by pbengoec         ###   ########.fr        #
+#    Updated: 2023/05/24 12:50:43 by pbengoec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,19 +43,13 @@ GREEN = \033[0;32m
 NONE = \033[0m
 
 
-all: check_libft check_minilibx project $(HDRS) ${NAME}
-		@echo "Project ready"
+all: $(HDRS) ${NAME}
 
-check_minilibx:
-		@echo "Checking minilibx..."
+${MLX}:
 		@make -C library/MLX42
 	
-check_libft:
-		@echo "Checking libft..."
+${LIBFT}:
 		@make -C library/libft
-
-project:
-		@echo "Checking project..."
 
 $(OBJSFD):
 		@mkdir $@
@@ -69,7 +63,7 @@ $(OBJSFD)$(GNLPFD): $(OBJSFD)
 		@mkdir $@
 		@echo "\t[ $(GREEN)✔$(NONE) ] $@ directory"
 
-${NAME}: $(OBJSFD)$(SOLONGPFD) $(OBJSFD)$(GNLPFD) ${GNL_OBJS} $(SOLONG_OBJS) $(HDRS)
+${NAME}: ${MLX} ${LIBFT} $(OBJSFD)$(SOLONGPFD) $(OBJSFD)$(GNLPFD) ${GNL_OBJS} $(SOLONG_OBJS) $(HDRS)
 		@gcc $(CFLAGS) $(SOLONG_OBJS) ${GNL_OBJS} $(MLX) ${LIBFT} -o $@  -lglfw ${MLX_INC}
 		@echo "\t[ $(GREEN)✔$(NONE) ] $@ executable"
 		

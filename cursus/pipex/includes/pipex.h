@@ -6,7 +6,7 @@
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 19:15:59 by pbengoec          #+#    #+#             */
-/*   Updated: 2023/05/04 20:59:32 by pbengoec         ###   ########.fr       */
+/*   Updated: 2023/05/17 17:09:26 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,6 @@ void	ft_first_process(char **argv, char **envp, t_pipex pipex);
 void	ft_second_process(char **argv, char **envp, t_pipex pipex);
 void	ft_free_child(t_pipex *pipex);
 void	ft_free_parent(t_pipex *pipex);
-void	msg_error(char *err);
+void	ft_msg_error(char *err);
+int		ft_msg_child_error(char *err);
 #endif
