@@ -6,14 +6,14 @@
 #    By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/16 15:17:39 by pbengoec          #+#    #+#              #
-#    Updated: 2023/05/24 12:50:43 by pbengoec         ###   ########.fr        #
+#    Updated: 2023/10/07 12:17:15 by pbengoec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 
 CFLAGS = -Werror -Wall -Wextra -g3
-
+	
 SRCSFD = src/
 
 SOLONGPFD = so_long/
