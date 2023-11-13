@@ -98,13 +98,13 @@ void	PhoneBook::printContacts()
 	if (getLengthList() == 0)
 		return ;
 	std::cout<<"Introduce index of contact: ";
-	std::cin>>ind;
+	std::getline(std::cin, ind);
 	if (std::cin.eof())
 		return ;
 	while (ind.length() != 1 || !isdigit(ind[0]) ||stoi(ind) < 1 || stoi(ind) > getLengthList())
 	{
 		std::cout<<"Introduce a valid index: ";
-		std::cin>>ind;
+		std::getline(std::cin, ind);
 		if (std::cin.eof())
 			return ;
 	}

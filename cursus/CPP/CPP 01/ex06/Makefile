@@ -1,5 +1,5 @@
 #PROGRAM NAME
-NAME = braiiiiiiiinnnzzz
+NAME = harlFilter
 
 #COMPILATOR
 CC = g++
@@ -9,7 +9,7 @@ CFLAGS = -Werror -Wall -Wextra -std=c++98
 
 #SOURCES
 SRCSFD = src/
-SRC = main.cpp Zombie.cpp zombieHorde.cpp
+SRC = main.cpp Harl.cpp
 
 #OBJECTS
 OBJSFD = objs/
@@ -17,7 +17,7 @@ OBJS = $(addprefix $(OBJSFD), $(SRC:.cpp=.o))
 
 #HEADERS
 HDRSFD = includes/
-HDR = Zombie.hpp
+HDR = Harl.hpp
 HDRS = $(addprefix $(HDRSFD), $(HDR))
 HDR_INC = -I./includes
 

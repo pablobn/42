@@ -12,7 +12,7 @@ int	main(void)
 	while (str != "EXIT" && !std::cin.eof())
 	{
 		std::cout << "Choose one (ADD, SEARCH, EXIT)" <<std::endl;
-		std::cin >> str;
+		std::getline(std::cin, str);
 		if (str == "ADD" && !std::cin.eof())
 		{
 			contact.initializeValues();

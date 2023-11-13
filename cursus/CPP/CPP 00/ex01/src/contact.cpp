@@ -3,23 +3,23 @@
 void	Contact::initializeValues()
 {
 	std::cout << "Name: ";
-	std::cin >> name;
+	std::getline(std::cin, name);
 	if (name.empty())
 		return ;
 	std::cout << "Last name: ";
-	std::cin >> surname;
+	std::getline(std::cin, surname);
 	if (surname.empty())
 		return ;
 	std::cout << "Nick name: ";
-	std::cin >> nick;
+	std::getline(std::cin, nick);
 	if (nick.empty())
 		return ;
 	std::cout << "Phone Number: ";
-	std::cin >> phone;
+	std::getline(std::cin, phone);
 	if (phone.empty())
 		return ;
 	std::cout << "Darkest Secret: ";
-	std::cin >> secret;
+	std::getline(std::cin, secret);
 	if (secret.empty())
 		return ;
 }
