@@ -1,6 +1,5 @@
 #include <iostream>
 #define N 9
-using namespace std;
 int grid[N][N] = {
    {3, 0, 6, 5, 0, 8, 4, 0, 0},
    {5, 2, 0, 0, 0, 0, 0, 0, 0},
@@ -74,8 +73,8 @@ bool solveSudoku(){
    return false;
 }
 int main(){
-   if (solveSudoku() == true)
+   if (solveSudoku())
       sudokuGrid();
    else
-      cout << "No solution exists";
+      std::cout << "No solution exists" << std::endl;
 }
