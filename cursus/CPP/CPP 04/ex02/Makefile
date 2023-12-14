@@ -1,5 +1,5 @@
 #PROGRAM NAME
-NAME = diamondTrap
+NAME = animal
 
 #COMPILATOR
 CC = g++
@@ -9,7 +9,7 @@ CFLAGS = -Werror -Wall -Wextra -std=c++98
 
 #SOURCES
 SRCSFD = src/
-SRC = main.cpp ClapTrap.cpp FragTrap.cpp ScavTrap.cpp DiamondTrap.cpp
+SRC = main.cpp Animal.cpp Cat.cpp Dog.cpp Brain.cpp
 
 #OBJECTS
 OBJSFD = objs/
@@ -17,7 +17,7 @@ OBJS = $(addprefix $(OBJSFD), $(SRC:.cpp=.o))
 
 #HEADERS
 HDRSFD = includes/
-HDR = ClapTrap.hpp FragTrap.hpp FragTrap.hpp DiamondTrap.hpp
+HDR = Animal.hpp Cat.hpp Dog.hpp Brain.hpp
 HDRS = $(addprefix $(HDRSFD), $(HDR))
 HDR_INC = -I./includes
 

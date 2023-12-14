@@ -1,12 +1,13 @@
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap(): health(10), energy(10), damage(0), name("null")
+ClapTrap::ClapTrap(): name("null"), health(10), energy(10), damage(0)
 {
 	std::cout<<"(ClapTrap) Default Constructor called"<<std::endl;
 }
 
-ClapTrap::ClapTrap(std::string name): health(10), energy(10), damage(0), name(name)
+ClapTrap::ClapTrap(std::string name): name("null"), health(10), energy(10), damage(0)
 {
+	this->name = name;
 	std::cout<<"(ClapTrap) "<<this->name<<" is created"<<std::endl;
 }
 

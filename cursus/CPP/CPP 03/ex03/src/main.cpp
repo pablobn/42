@@ -14,5 +14,7 @@ int	main(void)
 	julio.attack("Pablo");
 	pablo.whoAmI();
 	julio.guardGate();
+	pablo.attack("Julio");
+	pablo.takeDamage(100);
 	return (0);
 }
