@@ -1,5 +1,5 @@
 #PROGRAM NAME
-NAME = animal
+NAME = bureaucrat
 
 #COMPILATOR
 CC = g++
@@ -9,7 +9,7 @@ CFLAGS = -Werror -Wall -Wextra -std=c++98
 
 #SOURCES
 SRCSFD = src/
-SRC = main.cpp Animal.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp
+SRC = main.cpp Bureaucrat.cpp
 
 #OBJECTS
 OBJSFD = objs/
@@ -17,7 +17,7 @@ OBJS = $(addprefix $(OBJSFD), $(SRC:.cpp=.o))
 
 #HEADERS
 HDRSFD = includes/
-HDR = Animal.hpp Cat.hpp Dog.hpp WrongAnimal.hpp WrongCat.hpp
+HDR = Bureaucrat.hpp
 HDRS = $(addprefix $(HDRSFD), $(HDR))
 HDR_INC = -I./includes
 
