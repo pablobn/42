@@ -1,6 +1,7 @@
 #include "Animal.hpp"
 #include "Cat.hpp"
 #include "Dog.hpp"
+#include "Brain.hpp"
 
 void	ft_leaks()
 {
@@ -10,7 +11,6 @@ void	ft_leaks()
 int	main(void)
 {
 	const Animal *animals[10];
-	const Animal *deepCopy;
 
 	// atexit(ft_leaks);
 
@@ -23,9 +23,11 @@ int	main(void)
 		animals[i] = new Dog();
 	}
 
-	deepCopy = animals[0];
-	std::cout<<deepCopy->getType()<<std::endl;
-	std::cout<<"------Destructors------"<<std::endl;
+	Cat *gato = new Cat();
+	Cat *copyGato(gato);
+	std::cout<<copyGato->getBrain()->getIdeas()[0]<<std::endl;
+	copyGato->getBrain()->getIdeas()[0] = "a";
+	std::cout<<copyGato->getBrain()->getIdeas()[0]<<std::endl;
 	for (int i = 0; i < 10; i++)
 	{
 		delete animals[i];

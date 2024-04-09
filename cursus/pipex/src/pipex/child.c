@@ -6,7 +6,7 @@
 /*   By: pbengoec <pbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 18:48:16 by pbengoec          #+#    #+#             */
-/*   Updated: 2023/05/23 16:34:46 by pbengoec         ###   ########.fr       */
+/*   Updated: 2024/01/24 18:53:55 by pbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	ft_first_process(char **argv, char **envp, t_pipex pipex)
 		ft_free_child(&pipex);
 		exit(1);
 	}
-	execve(pipex.cmd_path, pipex.cmd_argv, envp);
+	execve(pipex.cmd_path, &argv[2], envp);
 }
 
 void	ft_second_process(char **argv, char **envp, t_pipex pipex)
@@ -64,5 +64,5 @@ void	ft_second_process(char **argv, char **envp, t_pipex pipex)
 		ft_free_child(&pipex);
 		exit(1);
 	}
-	execve(pipex.cmd_path, pipex.cmd_argv, envp);
+	execve(pipex.cmd_path, &argv[3], envp);
 }

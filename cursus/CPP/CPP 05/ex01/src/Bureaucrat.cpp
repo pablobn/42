@@ -16,7 +16,7 @@ Bureaucrat::Bureaucrat(int grade): name("default")
 	}
 	catch (std::exception& e)
 	{
-		std::cerr << "Exception: " << e.what() << std::endl;
+		std::cerr << "Excepcion: " << e.what() << std::endl;
 	}
 }
 
@@ -60,7 +60,7 @@ void Bureaucrat::setGrade(int grade)
 	}
 	catch (std::exception& e)
 	{
-		std::cerr << "Excepcion: " << e.what() << std::endl;
+		std::cerr << "Exception: " << e.what() << std::endl;
 	}
 }
 
@@ -78,4 +78,21 @@ std::ostream &operator <<(std::ostream &out, const Bureaucrat &bureaucrat)
 {
 	out << bureaucrat.getName() << ", bureaucrate grade " << bureaucrat.getGrade();
 	return out;
+}
+
+void	Bureaucrat::signForm(const Form &form)
+{
+	std::cout << this->getName();
+	if (form.getIsSigned())
+		std::cout << " signed " << form.getName();
+	else
+	{
+		std::cout << " couldn't sign " << form.getName() << " because ";
+		if (form.getSignGrade() < this->getGrade())
+			std::cout << "grade is too low";
+		else
+			std::cout << "didn't sign the form yet";
+
+	}
+	std::cout << std::endl;
 }

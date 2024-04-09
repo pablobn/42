@@ -1,0 +1,146 @@
+
+body
+{
+    background-color: #166866;
+    color: #1bf4ca;
+    font-family: "Roboto", sans-serif;
+}
+h1,h3
+{
+    text-align: center;
+}
+
+hr
+{
+    border-color: #092a29;
+    background-color: #092a29;
+    height: 2px;
+}
+
+ul 
+{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #092a29;
+}
+
+li 
+{
+    float: left;
+}
+
+li a 
+{
+    display: block;
+    color: #1bf4ca;
+    text-align: center;
+    font-weight: bold;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) 
+{
+background-color: #111;
+}
+
+.active 
+{
+background-color: #04AA6D;
+}
+
+#profiles
+{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+
+#profiles div
+{
+    /* margin: 1%;
+    margin-left: 5%;
+    margin-right: 5%; */
+    text-align: center;
+    width: 15%;
+}
+
+#profiles img
+{
+    width: 100%;
+}
+
+#upload
+{
+    display: flex;
+    justify-content: center;
+}
+
+#form1
+{
+    width: 35%;
+    display: flex;
+    justify-content: center;
+}
+
+#upload form
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    font-weight: bold;
+    background-color: #0e4140;
+    border: 2px solid #0b3433;
+    border-radius: 2%;
+}
+
+#upload input
+{
+    width: 75%;
+    margin-top: 3%;
+}
+
+#upload label
+{
+    width: 75%;
+}
+
+#upload input[type=file]::file-selector-button 
+{
+    padding: .2em .4em;
+    border-radius: .2em;
+    color: #1bf4ca;
+    background-color: #0e2941;
+}
+
+#upload button
+{
+    background-color: #681618;
+    border: 2px solid #0b3433;
+    color: #1bf4ca;
+    width: 50%;
+    padding: 2.5%;
+    border-radius: 2%;
+    font-weight: bold;
+}
+
+#upload input[type=file]::before
+{
+    background-color: #681618;
+    border: 2px solid #0b3433;
+    color: #1bf4ca;
+    padding: 2.5%;
+    border-radius: 2%;
+    font-weight: bold;
+}
+
+#upload button:hover
+{
+    background-color: #1bf4ca;
+    color: #681618;
+}
