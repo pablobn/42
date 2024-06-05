@@ -3,6 +3,7 @@
 #include <string.h>
 #include <iostream>
 #include <cstdlib>
+#include <iomanip>
 #include <iostream>
 #include "utils.hpp"
 class ScalarConverter
@@ -15,16 +16,14 @@ class ScalarConverter
 		std::string str;
 		ScalarConverter();
 		ScalarConverter(char *str);
-		char convertChar(char *str);
-		int convertInt(char *str);
-		double convertDouble(char *str);
-		float convertFloat();
+		int isNumber();
+		void convertDouble();
+		void convertFloat();
+		void convertChar();
+		void convertInt();
 		void print();
-		void printChar();
-		void printInt();
-		void printFloat();
-		void printDouble();
-		int	detectString()
+		void printChar(void);
+		int	detectString();
 	public:
 		static void convert(char *string);
 
