@@ -4,7 +4,6 @@
 #include <iostream>
 #include <cstdlib>
 #include <iomanip>
-#include <iostream>
 #include "utils.hpp"
 class ScalarConverter
 {
