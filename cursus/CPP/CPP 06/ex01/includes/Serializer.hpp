@@ -6,15 +6,14 @@
 
 typedef struct s_data
 {
-	std::string name
-	int	age
+	std::string name;
+	int	age;
 } Data;
 
 class Serializer
 {
 	private:
 		Serializer();
-		Serializer(Serializer const & src);
 		~Serializer();
 	public:
 		static uintptr_t serialize(Data* ptr);

@@ -1,19 +1,18 @@
-#include "ScalarConverter.hpp"
+#include "Serializer.hpp"
 
-void	ft_leaks(void)
+int	main()
 {
-	system("leaks -q bureaucrat");
-}
+	Data data;
+	uintptr_t raw = Serializer::serialize(&data);
+	Data *ptr = Serializer::deserialize(raw);
 
-int	main(int argc, char *argv[])
-{
-	if (argc != 2)
-	{
-		std::cout << "Error con los parametros";
-		return (1);
-	}
+	data.name = "Manuel";
+	data.age = 17;
 
-	ScalarConverter::convert(argv[1]);
+	std::cout << "Serializer = " << raw << std::endl;
+	std::cout << "Deserializer =  " << ptr << std::dec << std::endl;
+	std::cout << "data.name = " << data.name << " data.age =  " << data.age << std::endl;
+	std::cout << "ptr->name = " << ptr->name << " ptr->age =  " << ptr->age << std::endl;
 
-	return (0);
+	return(0);
 }

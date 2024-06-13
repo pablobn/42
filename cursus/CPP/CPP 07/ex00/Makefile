@@ -9,7 +9,7 @@ CFLAGS = -Werror -Wall -Wextra -std=c++98
 
 #SOURCES
 SRCSFD = src/
-SRC = main.cpp Serializer.cpp
+SRC = main.cpp
 
 #OBJECTS
 OBJSFD = objs/
@@ -17,7 +17,7 @@ OBJS = $(addprefix $(OBJSFD), $(SRC:.cpp=.o))
 
 #HEADERS
 HDRSFD = includes/
-HDR = Serializer.hpp
+HDR = whatever.hpp
 HDRS = $(addprefix $(HDRSFD), $(HDR))
 HDR_INC = -I./includes
 
