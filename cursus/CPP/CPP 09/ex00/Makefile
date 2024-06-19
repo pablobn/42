@@ -1,5 +1,5 @@
 #PROGRAM NAME
-NAME = convert
+NAME = btc
 
 #COMPILATOR
 CC = g++
@@ -17,7 +17,7 @@ OBJS = $(addprefix $(OBJSFD), $(SRC:.cpp=.o))
 
 #HEADERS
 HDRSFD = includes/
-HDR = easyfind.hpp
+HDR = BitcoinExchange.hpp
 HDRS = $(addprefix $(HDRSFD), $(HDR))
 HDR_INC = -I./includes
 
