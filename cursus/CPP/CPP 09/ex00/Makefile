@@ -9,7 +9,7 @@ CFLAGS = -Werror -Wall -Wextra -std=c++98
 
 #SOURCES
 SRCSFD = src/
-SRC = main.cpp
+SRC = main.cpp BitcoinExchange.cpp
 
 #OBJECTS
 OBJSFD = objs/
