@@ -1,5 +1,5 @@
 #PROGRAM NAME
-NAME = convert
+NAME = PmergeMe
 
 #COMPILATOR
 CC = g++
@@ -9,7 +9,7 @@ CFLAGS = -Werror -Wall -Wextra -std=c++98
 
 #SOURCES
 SRCSFD = src/
-SRC = main.cpp
+SRC = main.cpp PmergeMe.cpp
 
 #OBJECTS
 OBJSFD = objs/
@@ -17,7 +17,7 @@ OBJS = $(addprefix $(OBJSFD), $(SRC:.cpp=.o))
 
 #HEADERS
 HDRSFD = includes/
-HDR = MutantStack.hpp
+HDR = PmergeMe.hpp
 HDRS = $(addprefix $(HDRSFD), $(HDR))
 HDR_INC = -I./includes
 

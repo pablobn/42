@@ -1,27 +1,42 @@
-#include "MutantStack.hpp"
+#include "PmergeMe.hpp"
 
-int main()
+int	introduceDates(std::list<int> &list, std::vector<int> &vector, char**av)
 {
-	MutantStack<int> mstack;
-	mstack.push(5);
-	mstack.push(17);
-	std::cout << mstack.top() << std::endl;
-	mstack.pop();
-	std::cout << mstack.size() << std::endl;
-	mstack.push(3);
-	mstack.push(5);
-	mstack.push(737);
-	//[...]
-	mstack.push(0);
-	MutantStack<int>::iterator it = mstack.begin();
-	MutantStack<int>::iterator ite = mstack.end();
-	++it;
-	--it;
-	while (it != ite)
+	int i = 1;
+	char* token;
+	while (av[i])
 	{
-	std::cout << *it << std::endl;
-	++it;
+		token = std::strtok(av[i], " ");
+		if (!std::isdigit(token[0]))
+			return (-1);
+		while (token != NULL)
+		{
+			if (!isdigit(token[0]))
+				return (-1);
+			vector.push_back(std::atoi(token));
+			list.push_back(std::atoi(token));
+			token = std::strtok(NULL, " ");
+		}
+		i++;
 	}
-	std::stack<int> s(mstack);
-	return 0;
+	return (0);
+}
+
+int main(int argc, char** argv) {
+	if(argc <= 1)
+	{
+		std::cerr<<"Error"<<std::endl;
+		return(1);
+	}
+	std::list<int> list;
+	std::vector<int> vector;
+
+	if (introduceDates(list, vector, argv) == -1)
+	{
+		std::cerr<<"Error"<<std::endl;
+		return(1);
+	}
+	PmergeMe pmerge(list, vector);
+	pmerge.resolve();
+	return(0);
 }
